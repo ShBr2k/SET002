@@ -3,10 +3,7 @@ package com.company.HW13Collections;
 
 import com.sun.xml.internal.bind.v2.runtime.AssociationMap;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 public class Main {
 
@@ -32,11 +29,17 @@ public class Main {
 
         //}
 
-        for (Object entry: personMap.entrySet()) {
 
-            System.out.println(entry);
+        
 
-            int count = Collections.frequency(new ArrayList<String>(personMap.values()), personMap.values());
+        for (int i = 0; i < personMap.size(); i++) {
+
+
+            //System.out.println(new Vector(personMap.values()).get(i));
+            //String ff= new Vector(personMap.values()).get(i);
+            //System.out.println(entry.values());
+            //System.out.println(personMap.get("LN01"));
+            int count = Collections.frequency(new ArrayList<String>(personMap.values()), (new Vector(personMap.values()).get(i)));
             System.out.println(count);
 
         }
