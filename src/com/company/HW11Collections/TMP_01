@@ -1,0 +1,432 @@
+package com.company.HW00Collections;
+
+import java.util.Comparator;
+import java.util.Date;
+
+/**
+ * The Car class provide creation instance, setting and getting access to
+ * the fields a class.
+ * The Car class implements interface Comparator
+ */
+public class Car implements Comparator<Car> {
+    private String Type;                // Field of Type Car
+    private Date YearProduction;        // Field of Year production Car
+    private float EngineCapacity;       // Engine Capacity
+
+    // Overriding compare method
+    @Override
+    public int compare(Car tmpCarType1, Car tmpCarType2) {
+
+        String strCarType1 = tmpCarType1.getType();
+        String strCarType2 = tmpCarType2.getType();
+        //ASC order (DESC order in sort method)
+        return strCarType1.compareTo(strCarType2);
+        //DESC order
+        //return strCarType2.compareTo(strCarType1);
+
+    }
+
+    // Used lambda expression
+    // Comparator<Car> compareByType = (Car tmpCarType1, Car tmpCarType2) -> tmpCarType2.getType().compareTo( tmpCarType1.getType() );
+
+
+    public static class TypeComparator implements Comparator<Car> {
+
+        // Overriding method compare
+        @Override
+        public int compare(Car tmpCarType1, Car tmpCarType2) {
+
+            String strCarType1 = tmpCarType1.getType();
+            String strCarType2 = tmpCarType2.getType();
+
+            //ASC order (DESC order in sort method)
+            return strCarType1.compareTo(strCarType2);
+
+            //DESC order
+            //return strCarType2.compareTo(strCarType1);
+
+        }
+    }
+
+
+
+    /**
+     * Constructor Car provide creation of instances
+     */
+    public Car() {
+    }
+
+    /**
+     * Method setType provide setting value type for instance
+     */
+    public void setType(String type) {
+        this.Type = type;
+    }
+
+    /**
+     * Method setYearProduction provide setting value yearProduction for instance
+     */
+    public void setYearProduction(Date yearProduction) {
+        this.YearProduction = yearProduction;
+    }
+
+    /**
+     * Method setEngineCapacity provide setting value EngineCapacity for instance
+     */
+    public void setEngineCapacity(float engineCapacity) {
+        this.EngineCapacity = engineCapacity;
+    }
+
+    /**
+     * Method getInformation provide reading all values of instance
+     */
+    public String getInformation(int numberCar) {
+        String returnInformation = "Type of car #" + numberCar + ": " + this.getType() +
+                ". Year of production: " + String.format("%tY", this.getYearProduction()) +
+                ". Engine capacity: " + this.getEngineCapacity();
+        return returnInformation;
+    }
+
+    /**
+     * Method getType provide reading value Type of instance
+     */
+    public String getType() {
+        return this.Type;
+    }
+
+    /**
+     * Method getYearProduction provide reading value YearProduction of instance
+     */
+    public Date getYearProduction() {
+        return this.YearProduction;
+    }
+
+    /**
+     * Method getEngineCapacity provide reading value EngineCapacity of instance
+     */
+    public float getEngineCapacity() {
+        return this.EngineCapacity;
+    }
+}
+
+
+/**
+ * Implements Interface Comparator for compare instance Car by Car Type
+ */
+
+    /*
+    public static class TypeComparator implements Comparator<Car> {
+
+        // Overriding method compare
+        @Override
+        public int compare(Car tmpCarType1, Car tmpCarType2) {
+
+            String strCarType1 = tmpCarType1.getType();
+            String strCarType2 = tmpCarType2.getType();
+
+            //ASC order (DESC order in sort method)
+            return strCarType1.compareTo(strCarType2);
+
+            //DESC order
+            //return strCarType2.compareTo(strCarType1);
+
+        }
+    }
+
+
+    /*
+    public static Comparator<Car> CarTypeComparator = new Comparator<Car>() {
+
+        public int compare(Car tmpCarType1, Car tmpCarType2) {
+            String strCarType1 = tmpCarType1.getType();
+            String strCarType2 = tmpCarType2.getType();
+
+            //ascending order
+            //return strCarType1.compareTo(strCarType2);
+
+            //descending order
+            return strCarType2.compareTo(strCarType1);
+        }
+    };
+    */
+
+
+
+
+
+package com.company.HW00Collections;
+
+import java.util.Comparator;
+import java.util.Date;
+
+/**
+ * The Car class provide creation instance, setting and getting access to
+ * the fields a class.
+ * The Car class implements interface Comparator
+ */
+public class Car {
+    private String Type;                // Field of Type Car
+    private Date YearProduction;        // Field of Year production Car
+    private float EngineCapacity;       // Engine Capacity
+
+    // Use lambda expression
+    // Comparator<Car> TypeCompareByLambda = (Car tmpCarType1, Car tmpCarType2) -> tmpCarType2.getType().compareTo( tmpCarType1.getType() );
+
+    // Use class TypeComparator
+    public static Comparator<Car> TypeComparator = new Comparator<Car>() {
+        public int compare(Car tmpCarType1, Car tmpCarType2) {
+            String strCarType1 = tmpCarType1.getType();
+            String strCarType2 = tmpCarType2.getType();
+            //ASC order (DESC order in sort method)
+            return strCarType1.compareTo(strCarType2);
+            //DESC order
+            //return strCarType2.compareTo(strCarType1);
+        }
+    };
+
+    // Use class YearComparator
+    public static Comparator<Car> YearComparator = new Comparator<Car>() {
+        public int compare(Car tmpCarType1, Car tmpCarType2) {
+            Date dateCarType1 = tmpCarType1.getYearProduction();
+            Date dateCarType2 = tmpCarType2.getYearProduction();
+            //ASC order (DESC order in sort method)
+            return dateCarType1.compareTo(dateCarType2);
+            //DESC order
+            //return strCarType2.compareTo(strCarType1);
+        }
+    };
+
+
+    /**
+     * Constructor Car provide creation of instances
+     */
+    public Car() {
+    }
+
+    /**
+     * Method setType provide setting value type for instance
+     */
+    public void setType(String type) {
+        this.Type = type;
+    }
+
+    /**
+     * Method setYearProduction provide setting value yearProduction for instance
+     */
+    public void setYearProduction(Date yearProduction) {
+        this.YearProduction = yearProduction;
+    }
+
+    /**
+     * Method setEngineCapacity provide setting value EngineCapacity for instance
+     */
+    public void setEngineCapacity(float engineCapacity) {
+        this.EngineCapacity = engineCapacity;
+    }
+
+    /**
+     * Method getInformation provide reading all values of instance
+     */
+    public String getInformation(int numberCar) {
+        String returnInformation = "Type of car #" + numberCar + ": " + this.getType() +
+                ". Year of production: " + String.format("%tY", this.getYearProduction()) +
+                ". Engine capacity: " + this.getEngineCapacity();
+        return returnInformation;
+    }
+
+    /**
+     * Method getType provide reading value Type of instance
+     */
+    public String getType() {
+        return this.Type;
+    }
+
+    /**
+     * Method getYearProduction provide reading value YearProduction of instance
+     */
+    public Date getYearProduction() {
+        return this.YearProduction;
+    }
+
+    /**
+     * Method getEngineCapacity provide reading value EngineCapacity of instance
+     */
+    public float getEngineCapacity() {
+        return this.EngineCapacity;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * Implements Interface Comparator for compare instance Car by Car Type
+ */
+
+    /*
+    public static class TypeComparator implements Comparator<Car> {
+
+        // Overriding method compare
+        @Override
+        public int compare(Car tmpCarType1, Car tmpCarType2) {
+
+            String strCarType1 = tmpCarType1.getType();
+            String strCarType2 = tmpCarType2.getType();
+
+            //ASC order (DESC order in sort method)
+            return strCarType1.compareTo(strCarType2);
+
+            //DESC order
+            //return strCarType2.compareTo(strCarType1);
+
+        }
+    }
+
+
+    /*
+    public static Comparator<Car> CarTypeComparator = new Comparator<Car>() {
+
+        public int compare(Car tmpCarType1, Car tmpCarType2) {
+            String strCarType1 = tmpCarType1.getType();
+            String strCarType2 = tmpCarType2.getType();
+
+            //ascending order
+            //return strCarType1.compareTo(strCarType2);
+
+            //descending order
+            return strCarType2.compareTo(strCarType1);
+        }
+    };
+    */
+
+
+
+
+
+
+package com.company.HW00Collections;
+
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+
+import static com.company.zTools.Readers.stringReader;
+
+
+/**
+ * Class HW05 - main for current task
+ *
+ * @author Roman Shamakhin
+ * @version 0.11 04 Oct 2019
+ */
+
+public class ComparableComparator {
+
+
+    //
+    ArrayList<Car> arrayListCar = new ArrayList<Car>();       // Create ArrayList of class Car
+
+    /**
+     * Method readArrayCar provide showing information of instances from arrayCar
+     */
+    private void readArrayListCar(int lengthArrayListCar) {
+        for (int i = 0; i < lengthArrayListCar; i++) {
+            System.out.println(arrayListCar.get(i).getInformation(i + 1));
+        }
+    }
+
+    /**
+     * Method runHW05 provide execution of task
+     */
+    public void runHW05() {
+
+        /* Filling array of instances of class Car, value yearProduction input by console,
+           values type, engineCapacity is calculated */
+
+        int i = 1; //counter
+
+        do {
+            System.out.print("Input Year of Production Car #" + (i) + ": ");
+            // Checking for correct of value of Year
+            try {
+
+                Date yearProduction = new SimpleDateFormat("yyyy").parse(stringReader());
+
+                Car car = new Car();
+                car.setType(Character.toString((char) (i + 64)));
+                car.setYearProduction(yearProduction);
+                car.setEngineCapacity(1 + i * 0.1f);
+
+                arrayListCar.add(car);
+
+            } catch (ParseException e) {
+                System.out.println("Entered value is not Year.");
+                System.exit(0);
+            } finally {
+            }
+
+            i++;
+
+            System.out.print("Next car? Y|N ");
+        }
+        while (stringReader().equals("y"));
+
+        /* Showing elements of array before sorting */
+        System.out.println(System.lineSeparator() + "List of cars before sorting:");
+        readArrayListCar(arrayListCar.size());
+
+        /* Sorting arrayList of Type field by DESC */
+        //Collections.sort(arrayListCar, new Car().reversed());
+
+        /* Sorting arrayList of Type field by DESC (use lambda expression )*/
+        // Collections.sort(arrayListCar, new Car().compareByType);
+
+        Collections.sort(arrayListCar, new Car.TypeComparator().reversed());
+
+        /* Showing elements of arrayList before sorting */
+        System.out.println(System.lineSeparator() + "List of cars after sorting (Field Type by DESC):");
+        readArrayListCar(arrayListCar.size());
+
+        /* Sorting elements of YearProduction field of array by ascending. Use algorithm 'Sorting by inclusion | Insertion sort'. */
+        Car curCar;                                           // Create temporary instance of class Car
+        Car tmpCar;                                           // Create temporary instance of class Car
+
+        for (i = 1; i < arrayListCar.size(); i++) {           // External loop
+            curCar = arrayListCar.get(i);                     // Save current instance
+            int j = i;                                        // Used interface Comparable (compareTo, x.compare(y)>0)
+            while ((j > 0) && (arrayListCar.get(j - 1).getYearProduction().compareTo(curCar.getYearProduction()) > 0)) {
+                // loop is repeated unit reach first element of array and instance [i] greater than instance [j-1]
+                tmpCar = arrayListCar.get(j);                  // Save temporary instance from array [j]
+                arrayListCar.set(j, arrayListCar.get(j - 1));  // Move instance in array from [j-1] to [j]
+                arrayListCar.set(j - 1, tmpCar);               // Restore temporary instance to [j-1]
+                j--;                                           // use previous index
+            }
+        }
+
+        /* Showing elements of arrayList before sorting */
+        System.out.println(System.lineSeparator() + "List of cars after sorting (Field Year by ASC):");
+        readArrayListCar(arrayListCar.size());
+
+    }
+}
+
+
+//Collections.sort(arrayListCar, Car.CarComarator);
