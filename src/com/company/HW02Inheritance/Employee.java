@@ -1,7 +1,11 @@
 package com.company.HW02Inheritance;
 
 public class Employee {
-    String employeeID;
+    public String EmployeeID;
+
+    public void setEmployeeID(String employeeID) {
+        EmployeeID = employeeID;
+    }
 
 
 }
