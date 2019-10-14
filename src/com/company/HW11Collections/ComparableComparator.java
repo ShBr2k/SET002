@@ -19,7 +19,7 @@ public class ComparableComparator {
 
 
     //
-    ArrayList<Car> arrayListCar = new ArrayList<Car>();       // Create ArrayList of class Car
+    public ArrayList<Car> arrayListCar = new ArrayList<Car>();       // Create ArrayList of class Car
 
     /**
      * Method readArrayCar provide showing information of instances from arrayCar
