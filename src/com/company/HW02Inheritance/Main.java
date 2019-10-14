@@ -70,16 +70,16 @@ public class Main {
 
 
         // Show info
-        for (int i = 0; i < arrayEmployee.length; i++ ) {
-            if (arrayEmployee[i] instanceof ContractEmployee) {
-                String employeeID = ((ContractEmployee) arrayEmployee[i]).getID();
-                String employeeName = ((ContractEmployee) arrayEmployee[i]).getName();
-                Float employeePay = ((ContractEmployee) arrayEmployee[i]).getCalculatePay();
+        for (Employee employee : arrayEmployee) {
+            if (employee instanceof ContractEmployee) {
+                String employeeID = ((ContractEmployee) employee).getID();
+                String employeeName = ((ContractEmployee) employee).getName();
+                float employeePay = ((ContractEmployee) employee).getCalculatePay();
                 System.out.println("Contact: " + employeeID + " " + employeeName + " " + employeePay);
             } else {
-                String employeeID = ((SalariedEmployee) arrayEmployee[i]).getID();
-                String employeeName = ((SalariedEmployee) arrayEmployee[i]).getName();
-                Float employeePay = ((SalariedEmployee) arrayEmployee[i]).getCalculatePay();
+                String employeeID = ((SalariedEmployee) employee).getID();
+                String employeeName = ((SalariedEmployee) employee).getName();
+                float employeePay = ((SalariedEmployee) employee).getCalculatePay();
                 System.out.println("Salaried: " + employeeID + " " + employeeName + " " + employeePay);
             }
         }
