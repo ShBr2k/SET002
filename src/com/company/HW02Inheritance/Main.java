@@ -10,19 +10,11 @@ public class Main {
     private static void showEmployees() {
         // Show info
         for (Employee employee : arrayEmployee) {
-            if (employee instanceof ContractEmployee) {
-                String employeeID = ((ContractEmployee) employee).getID();
-                String employeeName = ((ContractEmployee) employee).getName();
-                float employeePay = ((ContractEmployee) employee).getCalculatePay();
-                System.out.println("Contact: " + employeeID + " " + employeeName + " " + employeePay);
-            } else {
-                String employeeID = ((SalariedEmployee) employee).getID();
-                String employeeName = ((SalariedEmployee) employee).getName();
-                float employeePay = ((SalariedEmployee) employee).getCalculatePay();
-                System.out.println("Salaried: " + employeeID + " " + employeeName + " " + employeePay);
-            }
+            //System.out.println(employee.showInfo());
+            System.out.println(employee.toString());
         }
     }
+
 
     public static void main(String[] args) {
 
@@ -103,6 +95,8 @@ public class Main {
         //Show Employees after sorting
         System.out.println(System.lineSeparator() + "Employee after sorting:");
         showEmployees();
+
+
     }
 }
 

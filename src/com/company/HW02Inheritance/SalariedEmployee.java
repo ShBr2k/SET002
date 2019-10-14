@@ -21,13 +21,11 @@ public class SalariedEmployee extends Employee implements Calculate {
         SocialSecurityNumber = socialSecurityNumber;
     }
 
-
     public void setName(String name) {
         Name = name;
     }
 
-
-    public void setFixedPayment (float fixedPayment) {
+    public void setFixedPayment(float fixedPayment) {
         FixedPayment = fixedPayment;
     }
 
@@ -40,27 +38,32 @@ public class SalariedEmployee extends Employee implements Calculate {
         return FixedPayment;
     }
 
-    public String getID ()
-    {
+    public String getID() {
         return this.EmployeeID;
     }
 
-    public String getSocialSecurityNumber ()
-    {
+    public String getSocialSecurityNumber() {
         return this.SocialSecurityNumber;
     }
 
-    public String getName ()
-    {
+    public String getName() {
         return this.Name;
     }
 
-
-
-
-    public float getCalculatePay () {
+    public float getCalculatePay() {
         return this.CalculatePay;
     }
 
+
+    @Override
+    public String toString() {
+        return "Salaried Employee: " + getID() + " " + getName() + " " + getCalculatePay();
+    }
+
+
+    //@Override
+    //public void showInfo () {
+    //    System.out.println("Salaried Employee: " + EmployeeID + " " + getName() + " " + getCalculatePay());
+    //}
 
 }
