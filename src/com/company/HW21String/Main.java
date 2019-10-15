@@ -20,7 +20,6 @@ public class Main {
         //System.out.println(sentenceInput);
 
         Sentence sentence = new Sentence(sentenceInput);
-
         arrayListWord = sentence.sentenceRecognize();
 
         for(Word word : arrayListWord){
@@ -37,7 +36,7 @@ public class Main {
 
         }
 
-        System.out.println(d);
+        System.out.println(d+1 + " = " + arrayListWord.get(d).getWord() );
 
 
     }
