@@ -29,14 +29,13 @@ public class Main {
 
 
         // find longest word
-        System.out.println(System.lineSeparator() + "Longest word is: ");
         int maxIndex = 0;
         for (int i = 0; i < arrayListWord.size(); i++) {
             if (arrayListWord.get(i).getLength() > arrayListWord.get(maxIndex).getLength()) {
                 maxIndex = i;
             }
         }
-        System.out.println(arrayListWord.get(maxIndex).getWord());
+        System.out.println(System.lineSeparator() + "Longest word is: " + arrayListWord.get(maxIndex).getWord());
 
 
         // second word in reverse order
