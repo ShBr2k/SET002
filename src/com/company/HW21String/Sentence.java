@@ -1,7 +1,6 @@
 package com.company.HW21String;
 
 
-import javax.swing.*;
 import java.util.ArrayList;
 
 public class Sentence {
@@ -13,8 +12,8 @@ public class Sentence {
     }
 
 
-    public ArrayList<Word> sentenceRecognize() {
-        ArrayList<Word> arrayListWord = new ArrayList<Word>();
+    public ArrayList sentenceRecognize() {
+        ArrayList arrayListWord = new ArrayList();
         String foundWord = "";
         for (int i = 0; i < this.Sentence.length(); i++) {
             foundWord += this.Sentence.charAt(i);

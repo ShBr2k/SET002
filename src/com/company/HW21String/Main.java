@@ -11,34 +11,37 @@ public class Main {
 
     public static void main(String[] args) {
 
+        //read sentence, fill arrayListWord by words
+        ArrayList<Word> arrayListWord;
 
-        ArrayList<Word> arrayListWord = new ArrayList<Word>();
-
-
-        System.out.println("Input sentence: ");
+        System.out.print("Input sentence: ");
         String sentenceInput = stringReader();
-        //System.out.println(sentenceInput);
 
         Sentence sentence = new Sentence(sentenceInput);
         arrayListWord = sentence.sentenceRecognize();
 
-        for(Word word : arrayListWord){
-            System.out.println(word.getWord() + " : " + word.getLength());
+
+        // show words and its length
+        System.out.println(System.lineSeparator() + "Recognized words and its length: ");
+        for (Word word : arrayListWord) {
+            System.out.format("%-28s:%2d%n", word.getWord(), word.getLength());
         }
 
-        int d = 0;
+
+        // find longest word
+        System.out.println(System.lineSeparator() + "Longest word is: ");
+        int maxIndex = 0;
         for (int i = 0; i < arrayListWord.size(); i++) {
-
-            if (arrayListWord.get(i).getLength() > arrayListWord.get(d).getLength())
-            {
-                d = i;
+            if (arrayListWord.get(i).getLength() > arrayListWord.get(maxIndex).getLength()) {
+                maxIndex = i;
             }
-
         }
+        System.out.println(arrayListWord.get(maxIndex).getWord());
 
-        System.out.println(d+1 + " = " + arrayListWord.get(d).getWord() );
 
-
+        // second word in reverse order
+        String a = arrayListWord.get(arrayListWord.size() - 2).getWord();
+        System.out.println(System.lineSeparator() + "Second word in reverse order is: " + a);
     }
 
 }

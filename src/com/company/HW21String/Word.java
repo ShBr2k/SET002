@@ -1,8 +1,11 @@
 package com.company.HW21String;
 
+import java.util.ArrayList;
+
 public class Word {
     private String Word;
     private int Length;
+    //private ArrayList arrayListWord;
 
     public Word(String word, int length) {
         this.Word = word;
@@ -17,10 +20,6 @@ public class Word {
         return this.Length;
     }
 
-
-
-    public void LongestWord() {
-    }
 
 
 }

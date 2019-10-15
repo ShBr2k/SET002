@@ -2,7 +2,7 @@ package com.company.HW14Collection;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
+
 
 
 public class Main {
@@ -46,7 +46,7 @@ public class Main {
         Student.printStudents(arrayListStudent, 0);
 
         // Using a iterator
-        int course = 2;
+        int course = 5;
         System.out.println(System.lineSeparator() + "Select Course: " + course);
         Student.printStudents(arrayListStudent, course);
     }

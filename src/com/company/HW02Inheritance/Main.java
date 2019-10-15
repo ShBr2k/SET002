@@ -22,7 +22,7 @@ public class Main {
         contractEmployee01.setEmployeeID("ID001");
         contractEmployee01.setFederalTaxIDMember("FTID001");
         contractEmployee01.setName("Name001");
-        contractEmployee01.setHourlyRate(100.0f);
+        contractEmployee01.setHourlyRate(50.0f);
         contractEmployee01.setNumbersHours(8);
         contractEmployee01.setCalculatePay();
         arrayEmployee[0] = contractEmployee01;
@@ -31,7 +31,7 @@ public class Main {
         contractEmployee02.setEmployeeID("ID002");
         contractEmployee02.setFederalTaxIDMember("FTID002");
         contractEmployee02.setName("Name002");
-        contractEmployee02.setHourlyRate(100.0f);
+        contractEmployee02.setHourlyRate(80.0f);
         contractEmployee02.setNumbersHours(7);
         contractEmployee02.setCalculatePay();
         arrayEmployee[1] = contractEmployee02;
@@ -40,7 +40,7 @@ public class Main {
         contractEmployee03.setEmployeeID("ID003");
         contractEmployee03.setFederalTaxIDMember("FTID003");
         contractEmployee03.setName("Name003");
-        contractEmployee03.setHourlyRate(100.0f);
+        contractEmployee03.setHourlyRate(70.0f);
         contractEmployee03.setNumbersHours(2);
         contractEmployee03.setCalculatePay();
         arrayEmployee[2] = contractEmployee03;
