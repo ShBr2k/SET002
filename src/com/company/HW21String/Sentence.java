@@ -13,22 +13,19 @@ public class Sentence {
     }
 
 
-    public void sentenceRecognize() {
+    public ArrayList<Word> sentenceRecognize() {
         ArrayList<Word> arrayListWord = new ArrayList<Word>();
         String foundWord = "";
         for (int i = 0; i < this.Sentence.length(); i++) {
             foundWord += this.Sentence.charAt(i);
             if ((this.Sentence.charAt(i) == ' ') || (i == this.Sentence.length() - 1)) {
-                arrayListWord.add(new Word(foundWord.replace(" ", ""), foundWord.length()));
+                foundWord = foundWord.replace(" ", "");
+                arrayListWord.add(new Word(foundWord, foundWord.length()));
                 foundWord = "";
             }
         }
-
-
-        for(Word word : arrayListWord){
-
-            System.out.println(word.getWord() + " : " + word.getLength());
-        }
-       // System.out.println(arrayListWord.get(i).toString());
+        return arrayListWord;
     }
 }
+
+

@@ -21,15 +21,24 @@ public class Main {
 
         Sentence sentence = new Sentence(sentenceInput);
 
-        sentence.sentenceRecognize();
+        arrayListWord = sentence.sentenceRecognize();
 
+        for(Word word : arrayListWord){
+            System.out.println(word.getWord() + " : " + word.getLength());
+        }
 
-        //String ss = arrayListWord.get(1).toString();
+        int d = 0;
+        for (int i = 0; i < arrayListWord.size(); i++) {
 
-        //for(Word word : arrayListWord){
+            if (arrayListWord.get(i).getLength() > arrayListWord.get(d).getLength())
+            {
+                d = i;
+            }
 
-        //    System.out.println(word);
-        //}
+        }
+
+        System.out.println(d);
+
 
     }
 
