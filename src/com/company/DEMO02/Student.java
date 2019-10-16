@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class Student extends Person{
 
-    public Student (int taxNumber, String firstName, String lastName, Date birthDate)
+    public Student (int taxNumber, String firstName, String lastName, Date birthDate) // add field ??
     {
         super(taxNumber, firstName, lastName, birthDate);
     }
@@ -14,12 +14,3 @@ public class Student extends Person{
 
 }
 
-
-/*
-public  Student extends Person {
-
-    public boo
-
-}
-
-*/
