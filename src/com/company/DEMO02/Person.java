@@ -13,11 +13,11 @@ public class Person {
 
     }
 
-    public void Input() {
+    public void Input() { //not void?
 
     }
 
-    public void Output() {
+    public void Output() { //not void?
 
     }
 
