@@ -1,5 +1,8 @@
 package com.company.DEMO02;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Date;
 
 public class Person {
@@ -32,21 +35,51 @@ public class Person {
         this.Birthdate = birthdate;
     }
 
+    public int getTaxNumber() {
+        return this.TaxNumber;
+    }
+
+    public String getFirstname() {
+        return this.Firstname;
+    }
+
+    public String getLastname() {
+        return this.Lastname;
+    }
+
+    public Date getBirthdate() {
+        return this.Birthdate;
+    }
+
     public int getAge() {
         return 0; //return age
     }
 
-    public void Input() { //not void?
-        //add reader method from zTools
+
+    public String setInput() {
+        String input = null;
+
+        try {
+            InputStreamReader inputStreamReader = new InputStreamReader(System.in);
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            input = bufferedReader.readLine(); //all fields
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        finally {
+            return input;
+        }
     }
 
-    public void Output() { //not void?
 
+
+    public void Output() { //not void?
+        // Output the collection to a file | console
     }
 
     @Override
     public String toString() {
-        return "TaxNumber: " + this.TaxNumber + ". First Name: " + this.Firstname + ". Last Name: " + this.Lastname + ". Last Name: " + this.Birthdate;
+        return "Tax Number: " + this.TaxNumber + ". First Name: " + this.Firstname + ". Last Name: " + this.Lastname + ". Birthday: " + this.Birthdate;
     }
 
 
