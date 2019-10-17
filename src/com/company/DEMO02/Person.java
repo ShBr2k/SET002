@@ -1,22 +1,33 @@
-package com.company.DEMO02;
+package com.company.DEMO02; //static method ????
 
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import static com.company.DEMO02.Readers.stringReader;
+
 public class Person {
-    private int TaxNumber;
+    private String TaxNumber;
     private String Firstname;
     private String Lastname;
     private Date Birthdate;
 
+    String patternDate = "dd.MM.yyyy";
 
-    public Person(int taxNumber, String firstName, String lastName, Date birthDate) {
+
+    public Person() {
+    }
+
+
+    public Person(String taxNumber, String firstName, String lastName, Date birthDate) {
         this.TaxNumber = taxNumber;
         this.Firstname = firstName;
         this.Lastname = lastName;
         this.Birthdate = birthDate;
     }
 
-    public void setTaxNumber(int taxNumber) {
+    public void setTaxNumber(String taxNumber) {
         this.TaxNumber = taxNumber;
     }
 
@@ -32,21 +43,57 @@ public class Person {
         this.Birthdate = birthdate;
     }
 
+    public String getTaxNumber() {
+        return this.TaxNumber;
+    }
+
+    public String getFirstname() {
+        return this.Firstname;
+    }
+
+    public String getLastname() {
+        return this.Lastname;
+    }
+
+    public Date getBirthdate() {
+        return this.Birthdate;
+    }
+
     public int getAge() {
+
+        // age =
         return 0; //return age
     }
 
-    public void Input() { //not void?
-        //add reader method from zTools
+
+    public void setInput(Person person) {
+        System.out.print("Enter TN: ");
+        this.setTaxNumber(stringReader());
+        System.out.print("Enter FN: ");
+        this.setFirstname(stringReader());
+        System.out.print("Enter LN: ");
+        this.setLastname(stringReader());
+        System.out.print("Enter BD (DD.MM.YYYY): ");
+        try {
+            this.setBirthdate(new SimpleDateFormat(patternDate).parse(stringReader()));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void Output() { //not void?
 
+
+    public void Output() { //not void?
+        // Output the collection to a file | console ?
     }
 
     @Override
     public String toString() {
-        return "TaxNumber: " + this.TaxNumber + ". First Name: " + this.Firstname + ". Last Name: " + this.Lastname + ". Last Name: " + this.Birthdate;
+        return "Tax Number: " + this.getTaxNumber() +
+                ". First Name: " + this.getFirstname() +
+                ". Last Name: " + this.getLastname() +
+                ". Birthday: " +
+                String.format("%td.%tm.%tY", this.getBirthdate(), this.getBirthdate(), this.getBirthdate());
     }
 
 
