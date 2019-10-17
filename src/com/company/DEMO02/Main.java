@@ -11,21 +11,23 @@ public class Main {
 
     public static void main(String[] args) throws ParseException {
 
+
         String patternDate = "dd.MM.yyyy";
 
-        ArrayList<Person> arrayList = new ArrayList();  //Person, Object
+        ArrayList<Person> arrayList = new ArrayList();
+
 
         //create by constructor
         arrayList.add(new Person("TNP001", "FN01", "LN01",
-                new SimpleDateFormat(patternDate).parse("21.07.1979")));
+                new SimpleDateFormat(patternDate).parse("20.07.1979")));
         arrayList.add(new Person("TNP002", "FN02", "LN02",
-                new SimpleDateFormat(patternDate).parse("22.07.1979")));
+                new SimpleDateFormat(patternDate).parse("22.07.1980")));
 
         arrayList.add(new Student("TNS003", "FN03", "LN03",
-                new SimpleDateFormat(patternDate).parse("23.07.1980"),
+                new SimpleDateFormat(patternDate).parse("23.07.1981"),
                 new SimpleDateFormat(patternDate).parse("01.01.2000")));
         arrayList.add(new Student("TNS004", "FN04", "LN04",
-                new SimpleDateFormat(patternDate).parse("24.07.1980"),
+                new SimpleDateFormat(patternDate).parse("24.07.1982"),
                 new SimpleDateFormat(patternDate).parse("01.01.2001")));
 
 
@@ -39,44 +41,15 @@ public class Main {
         arrayList.add(student);
 
 
-        //show
+        //show > 18 year old
         for (int i = 0; i < arrayList.size(); i++) {
-            System.out.println(arrayList.get(i).toString());
+            person = arrayList.get(i);
+            if (person.getAge() > 18) {
+                System.out.println("+ " + person.Output(person));
+            } else {
+                //System.out.println("- " + person.Output(person));
+            }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //move to Class by input ??
-        // birthDate = new SimpleDateFormat("ddMMyyyy").parse("12021980");
-        //Date yearOfEntry = new SimpleDateFormat("ddMMyyyy").parse("01012000");
-
-
-        // arrayList.add(student);
-
-        String de = (arrayList.get(0)).toString();
-        //String dd = (arrayList.get(1)).toString();
 
 
     }
