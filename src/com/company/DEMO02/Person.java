@@ -3,6 +3,9 @@ package com.company.DEMO02; //static method ????
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
 import java.util.Date;
 
 import static com.company.DEMO02.Readers.stringReader;
@@ -14,6 +17,12 @@ public class Person {
     private Date Birthdate;
 
     String patternDate = "dd.MM.yyyy";
+
+    public LocalDate convertToLocalDateViaInstant(Date dateToConvert) {
+        return dateToConvert.toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate();
+    }
 
 
     public Person() {
@@ -59,12 +68,13 @@ public class Person {
         return this.Birthdate;
     }
 
-    public int getAge() {
-
-        // age =
-        return 0; //return age
+    protected int getAge() {
+        LocalDate birthDay = convertToLocalDateViaInstant (this.getBirthdate());
+        LocalDate today = LocalDate.now();
+        Period diff = Period.between(birthDay, today);
+        int age = diff.getYears();
+        return age;
     }
-
 
     public void setInput(Person person) {
         System.out.print("Enter TN: ");
@@ -81,10 +91,9 @@ public class Person {
         }
     }
 
-
-
-    public void Output() { //not void?
-        // Output the collection to a file | console ?
+    public String Output(Person person) {
+        int age = this.getAge();
+        return "Person.  Age: " + age + ". "+ this.toString();
     }
 
     @Override

@@ -29,7 +29,6 @@ public class Student extends Person {
         return this.YearOfEntry;
     }
 
-
     @Override
     public void setInput(Person student) {
         super.setInput(this);
@@ -41,10 +40,10 @@ public class Student extends Person {
         }
     }
 
-
     @Override
-    public void Output() { //not void?
-        // Output the collection to a file | console ?
+    public String Output(Person person) {
+        int age = this.getAge();
+        return "Student. Age: " + age + ". "+ this.toString();
     }
 
     @Override //string.format
@@ -53,7 +52,7 @@ public class Student extends Person {
                 ". First Name: " + this.getFirstname() +
                 ". Last Name: " + this.getLastname() +
                 ". Birthday: " + String.format("%td.%tm.%tY", this.getBirthdate(), this.getBirthdate(), this.getBirthdate()) +
-                ". Year Of Entry: " + String.format("%tY", this.getYearOfEntry()); //?  + get age
+                ". Year Of Entry: " + String.format("%tY", this.getYearOfEntry());
     }
 
 
