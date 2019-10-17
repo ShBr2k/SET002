@@ -5,21 +5,27 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Date;
 
+import static com.company.DEMO02.Readers.stringReader;
+
 public class Person {
-    private int TaxNumber;
+    private String TaxNumber;
     private String Firstname;
     private String Lastname;
     private Date Birthdate;
 
 
-    public Person(int taxNumber, String firstName, String lastName, Date birthDate) {
+    public Person() {
+    }
+
+
+    public Person(String taxNumber, String firstName, String lastName, Date birthDate) {
         this.TaxNumber = taxNumber;
         this.Firstname = firstName;
         this.Lastname = lastName;
         this.Birthdate = birthDate;
     }
 
-    public void setTaxNumber(int taxNumber) {
+    public void setTaxNumber(String taxNumber) {
         this.TaxNumber = taxNumber;
     }
 
@@ -35,7 +41,7 @@ public class Person {
         this.Birthdate = birthdate;
     }
 
-    public int getTaxNumber() {
+    public String getTaxNumber() {
         return this.TaxNumber;
     }
 
@@ -52,9 +58,19 @@ public class Person {
     }
 
     public int getAge() {
+
+        // age =
         return 0; //return age
     }
 
+
+
+    public void inp (Person person) {
+        this.setTaxNumber(stringReader());
+        this.setFirstname(stringReader());
+        this.setLastname(stringReader());
+        //this.setBirthdate(setInput());
+    }
 
     public String setInput() {
         String input = null;
@@ -65,21 +81,20 @@ public class Person {
             input = bufferedReader.readLine(); //all fields
         } catch (IOException e) {
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             return input;
         }
     }
 
 
-
     public void Output() { //not void?
-        // Output the collection to a file | console
+        // Output the collection to a file | console ?
     }
 
     @Override
     public String toString() {
-        return "Tax Number: " + this.TaxNumber + ". First Name: " + this.Firstname + ". Last Name: " + this.Lastname + ". Birthday: " + this.Birthdate;
+        return "Tax Number: " + this.getTaxNumber() + ". First Name: " + this.getFirstname() + ". Last Name: " + this.getLastname() +
+                ". Birthday: " + String.format("%td.%tm.%tY", this.getBirthdate(), this.getBirthdate(), this.getBirthdate());
     }
 
 
