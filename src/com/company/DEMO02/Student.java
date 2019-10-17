@@ -1,18 +1,18 @@
 package com.company.DEMO02;
 
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import static com.company.DEMO02.Readers.stringReader;
 
 
 public class Student extends Person {
     private Date YearOfEntry;
 
 
-    public Student () {
+    public Student() {
     }
 
 
@@ -25,29 +25,21 @@ public class Student extends Person {
         this.YearOfEntry = yearOfEntry;
     }
 
-    public Date getYearOfEntry () {
+    public Date getYearOfEntry() {
         return this.YearOfEntry;
     }
 
 
-
-    /*
     @Override
-    public String setInput() {
-        String input = null;
-
+    public void setInput(Person student) {
+        super.setInput(this);
+        System.out.print("Enter YE (DD.MM.YYYY): ");
         try {
-            InputStreamReader inputStreamReader = new InputStreamReader(System.in);
-            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-            input = bufferedReader.readLine(); //all fields
-        } catch (IOException e) {
+            this.setYearOfEntry(new SimpleDateFormat(patternDate).parse(stringReader()));
+        } catch (ParseException e) {
             e.printStackTrace();
         }
-        finally {
-            return input;
-        }
     }
-    */
 
 
     @Override
@@ -55,11 +47,13 @@ public class Student extends Person {
         // Output the collection to a file | console ?
     }
 
-    @Override
+    @Override //string.format
     public String toString() {
-        return "Tax Number: " + this.getTaxNumber() + ". First Name: " + this.getFirstname() + ". Last Name: " + this.getLastname() +
+        return "Tax Number: " + this.getTaxNumber() +
+                ". First Name: " + this.getFirstname() +
+                ". Last Name: " + this.getLastname() +
                 ". Birthday: " + String.format("%td.%tm.%tY", this.getBirthdate(), this.getBirthdate(), this.getBirthdate()) +
-                ". Year Of Entry: " + String.format("%tY", this.getYearOfEntry()) ; //?  + get age
+                ". Year Of Entry: " + String.format("%tY", this.getYearOfEntry()); //?  + get age
     }
 
 

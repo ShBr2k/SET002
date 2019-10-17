@@ -1,8 +1,8 @@
-package com.company.DEMO02;
+package com.company.DEMO02; //static method ????
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import static com.company.DEMO02.Readers.stringReader;
@@ -12,6 +12,8 @@ public class Person {
     private String Firstname;
     private String Lastname;
     private Date Birthdate;
+
+    String patternDate = "dd.MM.yyyy";
 
 
     public Person() {
@@ -64,27 +66,21 @@ public class Person {
     }
 
 
-
-    public void inp (Person person) {
+    public void setInput(Person person) {
+        System.out.print("Enter TN: ");
         this.setTaxNumber(stringReader());
+        System.out.print("Enter FN: ");
         this.setFirstname(stringReader());
+        System.out.print("Enter LN: ");
         this.setLastname(stringReader());
-        //this.setBirthdate(setInput());
-    }
-
-    public String setInput() {
-        String input = null;
-
+        System.out.print("Enter BD (DD.MM.YYYY): ");
         try {
-            InputStreamReader inputStreamReader = new InputStreamReader(System.in);
-            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-            input = bufferedReader.readLine(); //all fields
-        } catch (IOException e) {
+            this.setBirthdate(new SimpleDateFormat(patternDate).parse(stringReader()));
+        } catch (ParseException e) {
             e.printStackTrace();
-        } finally {
-            return input;
         }
     }
+
 
 
     public void Output() { //not void?
@@ -93,8 +89,11 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Tax Number: " + this.getTaxNumber() + ". First Name: " + this.getFirstname() + ". Last Name: " + this.getLastname() +
-                ". Birthday: " + String.format("%td.%tm.%tY", this.getBirthdate(), this.getBirthdate(), this.getBirthdate());
+        return "Tax Number: " + this.getTaxNumber() +
+                ". First Name: " + this.getFirstname() +
+                ". Last Name: " + this.getLastname() +
+                ". Birthday: " +
+                String.format("%td.%tm.%tY", this.getBirthdate(), this.getBirthdate(), this.getBirthdate());
     }
 
 
