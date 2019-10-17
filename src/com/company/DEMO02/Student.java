@@ -56,6 +56,5 @@ public class Student extends Person {
                 ". Year Of Entry: " + String.format("%tY", this.getYearOfEntry()); //?  + get age
     }
 
-
 }
 
