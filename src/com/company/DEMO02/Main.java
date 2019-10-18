@@ -60,33 +60,10 @@ public class Main {
             System.out.println(person.Output(person));
         }
 
-
+        //write file
         boolean res = FileWriter(arrayList);
         if (res) {System.out.println("file written success");}
 
-
-        System.exit(0);
-
-        /*
-        try(FileWriter writer = new FileWriter(fileName, false))
-        {
-            // запись всей строки
-            //String text = "Hello Gold!\n";
-
-            for (int i = 0; i < arrayList.size(); i++) {
-                person = arrayList.get(i);
-                //System.out.println(person.Output(person));
-                writer.write(person.Output(person) + "\r\n");
-            }
-
-            writer.flush();
-        }
-        catch(IOException ex){
-            ex.printStackTrace();
-            //System.out.println(ex.getMessage());
-        }
-
-*/
 
     }
 }
