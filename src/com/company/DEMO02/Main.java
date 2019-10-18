@@ -1,16 +1,12 @@
 package com.company.DEMO02;
 
 
-import java.io.FileWriter;
-import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import static com.company.DEMO02.FileWriter.FileWriter2;
+import static com.company.DEMO02.FileWriter.FileWriter;
 
 
 public class Main {
@@ -65,8 +61,8 @@ public class Main {
         }
 
 
-        boolean res = FileWriter2(arrayList);
-        if (res) {System.out.println("file writen");}
+        boolean res = FileWriter(arrayList);
+        if (res) {System.out.println("file written success");}
 
 
         System.exit(0);
