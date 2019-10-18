@@ -7,14 +7,15 @@ import java.time.Period;
 import java.time.ZoneId;
 import java.util.Date;
 
-import static com.company.DEMO02.Main.dateFormat; //move to helpers
-import static com.company.DEMO02.Readers.stringReader; //move to helpers
+import static com.company.DEMO02.Readers.*;
+
 
 public class Person {
     private String taxNumber;
     private String firstName;
     private String lastName;
     private Date birthDate;
+    protected int age;
 
 
     private LocalDate convertToLocalDateViaInstant(Date dateToConvert) { //move to helpers
@@ -69,28 +70,22 @@ public class Person {
         LocalDate birthDay = convertToLocalDateViaInstant(this.getBirthDate()); //error if null use
         LocalDate today = LocalDate.now();
         Period diff = Period.between(birthDay, today);
-        return diff.getYears();
+        return age = diff.getYears();
     }
 
     public void Input(Person person) throws ParseException {
-        System.out.print("Enter TN: ");
-        this.setTaxNumber(stringReader());
-        System.out.print("Enter FN: ");
-        this.setFirstName(stringReader());
-        System.out.print("Enter LN: ");
-        this.setLastName(stringReader());
-        System.out.print("Enter BD (DD.MM.YYYY): ");  //check by reg or try...
-        try {
-            this.setBirthDate(dateFormat.parse(stringReader()));
-        } catch (ParseException e) {
-            e.printStackTrace();
-            System.out.println("\nEntered date is wrong. Default value will be set to: 01.01.2000\n");
-            this.setBirthDate(dateFormat.parse("01.01.2000"));
-        }
+        System.out.print("Enter Tax Number: ");
+        this.setTaxNumber(StringReader());
+        System.out.print("Enter First Name: ");
+        this.setFirstName(StringReader());
+        System.out.print("Enter Last Name:  ");
+        this.setLastName(StringReader());
+        System.out.print("Enter Birth Day (DD.MM.YYYY): ");
+        this.setBirthDate(DateReader());
     }
 
     public String Output(Person person) {
-        return "Person age:  " + this.getAge() + ". " + this.toString();
+        return "Person age:  " + age + ". " + this.toString();
     }
 
     @Override
