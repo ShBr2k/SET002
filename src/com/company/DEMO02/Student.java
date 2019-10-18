@@ -2,56 +2,56 @@ package com.company.DEMO02;
 
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import static com.company.DEMO02.Readers.stringReader;
+import static com.company.DEMO02.Main.dateFormat;      //helpers
+import static com.company.DEMO02.Readers.stringReader; //helpers
 
 
 public class Student extends Person {
-    private Date YearOfEntry;
+    private Date yearOfEntry;
 
 
     public Student() {
     }
 
-
     public Student(String taxNumber, String firstName, String lastName, Date birthDate, Date yearOfEntry) {
         super(taxNumber, firstName, lastName, birthDate);
-        this.YearOfEntry = yearOfEntry;
+        this.yearOfEntry = yearOfEntry;
     }
 
     public void setYearOfEntry(Date yearOfEntry) {
-        this.YearOfEntry = yearOfEntry;
+        this.yearOfEntry = yearOfEntry;
     }
 
     public Date getYearOfEntry() {
-        return this.YearOfEntry;
+        return this.yearOfEntry;
     }
 
     @Override
-    public void setInput(Person student) {
-        super.setInput(this);
-        System.out.print("Enter YE (DD.MM.YYYY): ");
+    public void Input(Person student) throws ParseException {
+        super.Input(this);
+        System.out.print("Enter YE (DD.MM.YYYY): "); //check by reg or try...
         try {
-            this.setYearOfEntry(new SimpleDateFormat(patternDate).parse(stringReader()));
+            this.setYearOfEntry(dateFormat.parse(stringReader()));
         } catch (ParseException e) {
             e.printStackTrace();
+            System.out.println("\nEntered date is wrong. Default value will be set to: 01.01.2000\n");
+            this.setYearOfEntry(dateFormat.parse("01.01.2000"));
         }
     }
 
     @Override
     public String Output(Person person) {
-        int age = this.getAge();
-        return "Student. Age: " + age + ". "+ this.toString();
+        return "Student age: " + this.getAge() + ". " + this.toString();
     }
 
-    @Override //string.format
+    @Override
     public String toString() {
         return "Tax Number: " + this.getTaxNumber() +
-                ". First Name: " + this.getFirstname() +
-                ". Last Name: " + this.getLastname() +
-                ". Birthday: " + String.format("%td.%tm.%tY", this.getBirthdate(), this.getBirthdate(), this.getBirthdate()) +
+                ". First Name: " + this.getFirstName() +
+                ". Last Name: " + this.getLastName() +
+                ". Birthday: " + String.format("%td.%tm.%tY", this.getBirthDate(), this.getBirthDate(), this.getBirthDate()) +
                 ". Year Of Entry: " + String.format("%tY", this.getYearOfEntry());
     }
 
