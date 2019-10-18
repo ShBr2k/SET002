@@ -27,7 +27,7 @@ public class Main {
                 new SimpleDateFormat(patternDate).parse("23.07.1981"),
                 new SimpleDateFormat(patternDate).parse("01.01.2000")));
         arrayList.add(new Student("TNS004", "FN04", "LN04",
-                new SimpleDateFormat(patternDate).parse("24.07.1982"),
+                new SimpleDateFormat(patternDate).parse("24.07.2010"),
                 new SimpleDateFormat(patternDate).parse("01.01.2001")));
 
 
@@ -47,7 +47,7 @@ public class Main {
             if (person.getAge() > 18) {
                 System.out.println("+ " + person.Output(person));
             } else {
-                //System.out.println("- " + person.Output(person));
+                System.out.println("- " + person.Output(person));
             }
         }
 
