@@ -1,14 +1,11 @@
 package com.company.DEMO02;
 
-import com.company.HW11Collections.Car;
-
 import java.util.Comparator;
 
-public class FirstNameComparator implements Comparator<Car> {
-    public int compare(Car tmpCarType1, Car tmpCarType2) {
-        String strCarType1 = tmpCarType1.getType();
-        String strCarType2 = tmpCarType2.getType();
+public class FirstNameComparator implements Comparator<Person> {
+    public int compare(Person FirstNamePerson1, Person FirstNamePerson2) {
         //ASC order (DESC order in sort method)
-        return strCarType1.compareTo(strCarType2);
+        return FirstNamePerson1.getFirstName().compareTo(FirstNamePerson2.getFirstName());
     }
 }
+

@@ -2,107 +2,104 @@ package com.company.DEMO02; //static method ????
 
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
 import java.util.Date;
 
-import static com.company.DEMO02.Readers.stringReader;
+import static com.company.DEMO02.Main.dateFormat; //move to helpers
+import static com.company.DEMO02.Readers.stringReader; //move to helpers
 
 public class Person {
-    private String TaxNumber;
-    private String Firstname;
-    private String Lastname;
-    private Date Birthdate;
+    private String taxNumber;
+    private String firstName;
+    private String lastName;
+    private Date birthDate;
 
-    String patternDate = "dd.MM.yyyy";
 
-    public LocalDate convertToLocalDateViaInstant(Date dateToConvert) {
+    private LocalDate convertToLocalDateViaInstant(Date dateToConvert) { //move to helpers
         return dateToConvert.toInstant()
                 .atZone(ZoneId.systemDefault())
                 .toLocalDate();
     }
 
-
     public Person() {
     }
 
-
     public Person(String taxNumber, String firstName, String lastName, Date birthDate) {
-        this.TaxNumber = taxNumber;
-        this.Firstname = firstName;
-        this.Lastname = lastName;
-        this.Birthdate = birthDate;
+        this.taxNumber = taxNumber;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthDate = birthDate;
     }
 
     public void setTaxNumber(String taxNumber) {
-        this.TaxNumber = taxNumber;
+        this.taxNumber = taxNumber;
     }
 
-    public void setFirstname(String firstname) {
-        this.Firstname = firstname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public void setLastname(String lastname) {
-        this.Lastname = lastname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public void setBirthdate(Date birthdate) {
-        this.Birthdate = birthdate;
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
     }
 
     public String getTaxNumber() {
-        return this.TaxNumber;
+        return this.taxNumber;
     }
 
-    public String getFirstname() {
-        return this.Firstname;
+    public String getFirstName() {
+        return this.firstName;
     }
 
-    public String getLastname() {
-        return this.Lastname;
+    public String getLastName() {
+        return this.lastName;
     }
 
-    public Date getBirthdate() {
-        return this.Birthdate;
+    public Date getBirthDate() {
+        return this.birthDate;
     }
 
     protected int getAge() {
-        LocalDate birthDay = convertToLocalDateViaInstant (this.getBirthdate());
+        LocalDate birthDay = convertToLocalDateViaInstant(this.getBirthDate()); //error if null use
         LocalDate today = LocalDate.now();
         Period diff = Period.between(birthDay, today);
-        int age = diff.getYears();
-        return age;
+        return diff.getYears();
     }
 
-    public void setInput(Person person) {
+    public void Input(Person person) throws ParseException {
         System.out.print("Enter TN: ");
         this.setTaxNumber(stringReader());
         System.out.print("Enter FN: ");
-        this.setFirstname(stringReader());
+        this.setFirstName(stringReader());
         System.out.print("Enter LN: ");
-        this.setLastname(stringReader());
-        System.out.print("Enter BD (DD.MM.YYYY): ");
+        this.setLastName(stringReader());
+        System.out.print("Enter BD (DD.MM.YYYY): ");  //check by reg or try...
         try {
-            this.setBirthdate(new SimpleDateFormat(patternDate).parse(stringReader()));
+            this.setBirthDate(dateFormat.parse(stringReader()));
         } catch (ParseException e) {
             e.printStackTrace();
+            System.out.println("\nEntered date is wrong. Default value will be set to: 01.01.2000\n");
+            this.setBirthDate(dateFormat.parse("01.01.2000"));
         }
     }
 
     public String Output(Person person) {
-        int age = this.getAge();
-        return "Person.  Age: " + age + ". "+ this.toString();
+        return "Person age:  " + this.getAge() + ". " + this.toString();
     }
 
     @Override
     public String toString() {
         return "Tax Number: " + this.getTaxNumber() +
-                ". First Name: " + this.getFirstname() +
-                ". Last Name: " + this.getLastname() +
+                ". First Name: " + this.getFirstName() +
+                ". Last Name: " + this.getLastName() +
                 ". Birthday: " +
-                String.format("%td.%tm.%tY", this.getBirthdate(), this.getBirthdate(), this.getBirthdate());
+                String.format("%td.%tm.%tY", this.getBirthDate(), this.getBirthDate(), this.getBirthDate());
     }
 
 
