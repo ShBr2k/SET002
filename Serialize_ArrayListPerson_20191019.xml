@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_102" class="java.beans.XMLDecoder">
+ <object class="java.util.ArrayList">
+  <void method="add">
+   <object class="com.company.DEMO02.Person">
+    <void property="birthDate">
+     <object class="java.util.Date">
+      <long>301269600000</long>
+     </object>
+    </void>
+    <void property="firstName">
+     <string>FN0D</string>
+    </void>
+    <void property="lastName">
+     <string>LN0A</string>
+    </void>
+    <void property="taxNumber">
+     <string>TN001</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.company.DEMO02.Person">
+    <void property="birthDate">
+     <object class="java.util.Date">
+      <long>1121979600000</long>
+     </object>
+    </void>
+    <void property="firstName">
+     <string>FN0B</string>
+    </void>
+    <void property="lastName">
+     <string>LN0B</string>
+    </void>
+    <void property="taxNumber">
+     <string>TN002</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.company.DEMO02.Student">
+    <void property="birthDate">
+     <object class="java.util.Date">
+      <long>364683600000</long>
+     </object>
+    </void>
+    <void property="firstName">
+     <string>FN0C</string>
+    </void>
+    <void property="lastName">
+     <string>LN0C</string>
+    </void>
+    <void property="taxNumber">
+     <string>TN003</string>
+    </void>
+    <void property="yearOfEntry">
+     <object class="java.util.Date">
+      <long>946677600000</long>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.company.DEMO02.Student">
+    <void property="birthDate">
+     <object class="java.util.Date">
+      <long>1027458000000</long>
+     </object>
+    </void>
+    <void property="firstName">
+     <string>FN0A</string>
+    </void>
+    <void property="lastName">
+     <string>LN0D</string>
+    </void>
+    <void property="taxNumber">
+     <string>TN004</string>
+    </void>
+    <void property="yearOfEntry">
+     <object class="java.util.Date">
+      <long>1262296800000</long>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.company.DEMO02.Student">
+    <void property="birthDate">
+     <object class="java.util.Date">
+      <long>942271200000</long>
+     </object>
+    </void>
+    <void property="firstName">
+     <string>FNXXX</string>
+    </void>
+    <void property="lastName">
+     <string>LNXXX</string>
+    </void>
+    <void property="taxNumber">
+     <string>FN102</string>
+    </void>
+    <void property="yearOfEntry">
+     <object class="java.util.Date">
+      <long>942271200000</long>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.company.DEMO02.Person">
+    <void property="birthDate">
+     <object class="java.util.Date">
+      <long>942271200000</long>
+     </object>
+    </void>
+    <void property="firstName">
+     <string>FNZZZ</string>
+    </void>
+    <void property="lastName">
+     <string>LNZZZ</string>
+    </void>
+    <void property="taxNumber">
+     <string>FN101</string>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>
