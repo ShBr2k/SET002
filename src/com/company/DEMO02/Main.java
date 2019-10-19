@@ -1,4 +1,4 @@
-package com.company.DEMO02;
+package com.company.DEMO02; //move method date, and protected
 
 
 import java.io.*;

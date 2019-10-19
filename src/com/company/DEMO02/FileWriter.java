@@ -21,7 +21,7 @@ public class FileWriter {
             System.out.println("\nFile: " + fileNameLog + " is saved.");
 
         } catch (IOException e) {
-            System.out.println("\nFile is not saved.");
+            System.out.println("\nFile is not saved.\n");
             //e.getMessage();
             e.printStackTrace();
         }

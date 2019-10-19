@@ -1,4 +1,4 @@
-package com.company.DEMO02; //static method ????
+package com.company.DEMO02;
 
 
 import java.io.Serializable;
@@ -97,6 +97,4 @@ public class Person implements Serializable {
                 ". Birthday: " +
                 String.format("%td.%tm.%tY", this.getBirthDate(), this.getBirthDate(), this.getBirthDate());
     }
-
-
 }
