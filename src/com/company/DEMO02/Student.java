@@ -1,6 +1,7 @@
 package com.company.DEMO02;
 
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.util.Date;
 
@@ -8,7 +9,7 @@ import static com.company.DEMO02.Main.dateFormat;      //helpers
 import static com.company.DEMO02.Readers.stringReader; //helpers
 
 
-public class Student extends Person {
+public class Student extends Person implements Serializable {
     private Date yearOfEntry;
 
 
