@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class Deserialization {
 
-    private static String fileNameXML = "Serialize_ArrayListPerson_" + LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd")) + ".xml"; ////move to helpers
+    private static final String fileNameXML = "Serialize_ArrayListPerson_" + LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd")) + ".xml"; ////move to helpers
 
     protected static ArrayList<Person> DeserializeArrayListPersonFromXML() throws IOException {
         FileInputStream fis = new FileInputStream(fileNameXML);

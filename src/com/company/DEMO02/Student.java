@@ -21,11 +21,11 @@ public class Student extends Person implements Serializable {
         this.yearOfEntry = yearOfEntry;
     }
 
-    public void setYearOfEntry(Date yearOfEntry) {
+    private void setYearOfEntry(Date yearOfEntry) {
         this.yearOfEntry = yearOfEntry;
     }
 
-    public Date getYearOfEntry() {
+    private Date getYearOfEntry() {
         return this.yearOfEntry;
     }
 
@@ -38,7 +38,7 @@ public class Student extends Person implements Serializable {
 
     @Override
     public String Output(Person student) {
-        return "Student age: " + this.getAge() + ". " + this.toString(); //age = 0 if deser.
+        return "Student age: " + this.getAge() + ". " + this.toString();
     }
 
     @Override

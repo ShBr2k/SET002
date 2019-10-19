@@ -12,12 +12,11 @@ import static com.company.DEMO02.Readers.*;
 
 
 public class Person implements Serializable {
-    private static final long serialversionUID = 129348938L;
     private String taxNumber;
     private String firstName;
     private String lastName;
     private Date birthDate;
-    protected int age;
+    private int age;
 
 
     private LocalDate convertToLocalDateViaInstant(Date dateToConvert) { //move to helpers

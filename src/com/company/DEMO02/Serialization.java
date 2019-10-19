@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class Serialization {
 
-    private static String fileNameXML = "Serialize_ArrayListPerson_" + LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd")) + ".xml"; ////move to helpers
+    private static final String fileNameXML = "Serialize_ArrayListPerson_" + LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd")) + ".xml"; ////move to helpers
 
     protected static void SerializeArrayListPersonToXML(ArrayList<Person> arrayListPerson) throws IOException {
         FileOutputStream fos = new FileOutputStream(fileNameXML);

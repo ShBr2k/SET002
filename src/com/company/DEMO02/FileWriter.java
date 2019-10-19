@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class FileWriter {
 
-    private static String fileNameLog = "Text_ArrayListPerson_" + LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd")) + ".log"; ////move to helpers
+    private static final String fileNameLog = "Text_ArrayListPerson_" + LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd")) + ".log"; ////move to helpers
 
     protected static void TextArrayListPersonWriter(ArrayList arrayList) {
 
