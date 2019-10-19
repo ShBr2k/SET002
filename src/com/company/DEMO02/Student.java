@@ -7,7 +7,7 @@ import static com.company.DEMO02.ConsoleReaders.DateReader;
 
 
 public class Student extends Person implements Serializable {
-    public Date yearOfEntry;
+    private Date yearOfEntry;
 
 
     public Student() {
@@ -18,7 +18,7 @@ public class Student extends Person implements Serializable {
         this.yearOfEntry = yearOfEntry;
     }
 
-    private void setYearOfEntry(Date yearOfEntry) {
+    public void setYearOfEntry(Date yearOfEntry) {
         this.yearOfEntry = yearOfEntry;
     }
 

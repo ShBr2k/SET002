@@ -10,11 +10,11 @@ import static com.company.DEMO02.Convertors.*;
 
 
 public class Person implements Serializable {
-    public String taxNumber;
-    public String firstName;
-    public String lastName;
-    public Date birthDate;
-    public int age;
+    private String taxNumber;
+    private String firstName;
+    private String lastName;
+    private Date birthDate;
+    private int age;
 
 
     public Person() {
@@ -27,15 +27,15 @@ public class Person implements Serializable {
         this.birthDate = birthDate;
     }
 
-    private void setTaxNumber(String taxNumber) {
+    public void setTaxNumber(String taxNumber) {
         this.taxNumber = taxNumber;
     }
 
-    private void setFirstName(String firstName) {
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    private void setLastName(String lastName) {
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
