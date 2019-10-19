@@ -5,8 +5,8 @@ import java.io.Serializable;
 import java.text.ParseException;
 import java.util.Date;
 
-import static com.company.DEMO02.Main.dateFormat;      //helpers
-import static com.company.DEMO02.Readers.stringReader; //helpers
+import static com.company.DEMO02.Readers.DateReader;
+
 
 
 public class Student extends Person implements Serializable {
@@ -32,19 +32,13 @@ public class Student extends Person implements Serializable {
     @Override
     public void Input(Person student) throws ParseException {
         super.Input(this);
-        System.out.print("Enter YE (DD.MM.YYYY): "); //check by reg or try...
-        try {
-            this.setYearOfEntry(dateFormat.parse(stringReader()));
-        } catch (ParseException e) {
-            e.printStackTrace();
-            System.out.println("\nEntered date is wrong. Default value will be set to: 01.01.2000\n");
-            this.setYearOfEntry(dateFormat.parse("01.01.2000"));
-        }
+        System.out.print("Enter Year of Entry (DD.MM.YYYY): ");
+        this.setYearOfEntry(DateReader());
     }
 
     @Override
-    public String Output(Person person) {
-        return "Student age: " + this.getAge() + ". " + this.toString();
+    public String Output(Person student) {
+        return "Student age: " + age + ". " + this.toString();
     }
 
     @Override

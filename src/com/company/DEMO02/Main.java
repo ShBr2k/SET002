@@ -19,22 +19,27 @@ public class Main {
 
         ArrayList<Person> arrayList = new ArrayList();
 
+
         // Create by constructor
         arrayList.add(new Person("TN001", "FN0D", "LN0A", dateFormat.parse("20.07.1979")));
         arrayList.add(new Person("TN002", "FN0B", "LN0B", dateFormat.parse("22.07.2005")));
         arrayList.add(new Student("TN003", "FN0C", "LN0C", dateFormat.parse("23.07.1981"), dateFormat.parse("01.01.2000")));
         arrayList.add(new Student("TN004", "FN0A", "LN0D", dateFormat.parse("24.07.2002"), dateFormat.parse("01.01.2010")));
 
+
         // Create by input
         Person person = new Person();
-        //person.Input(person);
-        //arrayList.add(person);
-        Student student = new Student();
-        //student.setInput(student);
-        //arrayList.add(student);
+        System.out.println("\nENTER INFO ABOUT PERSON:");
+        person.Input(person);
+        arrayList.add(person);
 
-        // Show > 18 year old persons and students of all ages
-        System.out.println("\nShow persons elder than 18 year and all students:");
+        Student student = new Student();
+        System.out.println("\nENTER INFO ABOUT STUDENT:");
+        student.Input(student);
+        arrayList.add(student);
+
+        // Show all students and persons older than 18 years
+        System.out.println("\nShow all students and persons older than 18 years:");
         for (int i = 0; i < arrayList.size(); i++) {
             person = arrayList.get(i);
             if (((person.getAge() > 18) && (person instanceof Person)) || (person instanceof Student)) {
@@ -44,7 +49,8 @@ public class Main {
             }
         }
 
-        // Sorting by First Name
+
+        // Sorting listArray by First Name
         System.out.println("\nSorting by First Name:");
         Collections.sort(arrayList, new FirstNameComparator());
         for (int i = 0; i < arrayList.size(); i++) {
@@ -52,7 +58,8 @@ public class Main {
             System.out.println(person.Output(person));
         }
 
-        // Sorting by Last Name
+
+        // Sorting listArray by Last Name
         System.out.println("\nSorting by Last Name:");
         Collections.sort(arrayList, new LastNameComparator());
         for (int i = 0; i < arrayList.size(); i++) {
@@ -60,9 +67,13 @@ public class Main {
             System.out.println(person.Output(person));
         }
 
-        //write file
-        boolean res = FileWriter(arrayList);
-        if (res) {System.out.println("file written success");}
+
+        // Save listArray to the file
+        FileWriter(arrayList);
+
+
+        //Ser|Des
+
 
 
     }
