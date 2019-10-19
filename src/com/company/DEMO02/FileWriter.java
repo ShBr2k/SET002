@@ -1,13 +1,12 @@
 package com.company.DEMO02;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import static com.company.DEMO02.Settings.fileNameLog;
+
 
 public class FileWriter {
 
-    private static final String fileNameLog = "Text_ArrayListPerson_" + LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd")) + ".log"; ////move to helpers
 
     protected static void TextArrayListPersonWriter(ArrayList arrayList) {
 

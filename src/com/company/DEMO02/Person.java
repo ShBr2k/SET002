@@ -1,29 +1,21 @@
 package com.company.DEMO02;
 
-
 import java.io.Serializable;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.Period;
-import java.time.ZoneId;
 import java.util.Date;
-
-import static com.company.DEMO02.Readers.*;
+import static com.company.DEMO02.ConsoleReaders.*;
+import static com.company.DEMO02.Convertors.*;
 
 
 public class Person implements Serializable {
-    private String taxNumber;
-    private String firstName;
-    private String lastName;
-    private Date birthDate;
-    private int age;
+    public String taxNumber;
+    public String firstName;
+    public String lastName;
+    public Date birthDate;
+    public int age;
 
-
-    private LocalDate convertToLocalDateViaInstant(Date dateToConvert) { //move to helpers
-        return dateToConvert.toInstant()
-                .atZone(ZoneId.systemDefault())
-                .toLocalDate();
-    }
 
     public Person() {
     }
@@ -35,15 +27,15 @@ public class Person implements Serializable {
         this.birthDate = birthDate;
     }
 
-    public void setTaxNumber(String taxNumber) {
+    private void setTaxNumber(String taxNumber) {
         this.taxNumber = taxNumber;
     }
 
-    public void setFirstName(String firstName) {
+    private void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    public void setLastName(String lastName) {
+    private void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
@@ -67,14 +59,14 @@ public class Person implements Serializable {
         return this.birthDate;
     }
 
-    protected int getAge() {
-        LocalDate birthDay = convertToLocalDateViaInstant(this.getBirthDate()); //error if null use
+    public int getAge() {
+        LocalDate birthDay = convertToLocalDateViaInstant(this.getBirthDate()); //error if null
         LocalDate today = LocalDate.now();
         Period diff = Period.between(birthDay, today);
         return age = diff.getYears();
     }
 
-    public void Input(Person person) throws ParseException {
+    protected void Input(Person person) throws ParseException {
         System.out.print("Enter Tax Number: ");
         this.setTaxNumber(StringReader());
         System.out.print("Enter First Name: ");
@@ -85,7 +77,7 @@ public class Person implements Serializable {
         this.setBirthDate(DateReader());
     }
 
-    public String Output(Person person) {
+    protected String Output(Person person) {
         return "Person age:  " + this.getAge() + ". " + this.toString();
     }
 

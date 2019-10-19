@@ -5,19 +5,18 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.util.Date;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static com.company.DEMO02.Main.dateFormat;
+import static com.company.DEMO02.Settings.*;
 
-public class Readers {
 
-    public static Date DateReader() throws ParseException {
+public class ConsoleReaders {
+
+    protected static Date DateReader() throws ParseException {
 
         String input = null;
         Date result = null;
         Pattern patternDate = Pattern.compile("^([0-3]{1}[0-9]{1}[.]{1}[0-1]{1}[0-9]{1}[.]{1}[1-2]{1}[0-9]{3})$");
-
 
         do {
 
@@ -51,19 +50,7 @@ public class Readers {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-    public static String StringReader() {
+    protected static String StringReader() {
         String input;
         String result = null;
 
@@ -80,7 +67,8 @@ public class Readers {
 
     }
 
-    public static Integer integerReader() {
+
+    protected static Integer integerReader() {
         String input;
         Integer result = 0;
 
@@ -96,7 +84,6 @@ public class Readers {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return result;
     }
 }

@@ -1,16 +1,13 @@
 package com.company.DEMO02;
 
-
 import java.io.Serializable;
 import java.text.ParseException;
 import java.util.Date;
-
-import static com.company.DEMO02.Readers.DateReader;
-
+import static com.company.DEMO02.ConsoleReaders.DateReader;
 
 
 public class Student extends Person implements Serializable {
-    private Date yearOfEntry;
+    public Date yearOfEntry;
 
 
     public Student() {
@@ -25,19 +22,19 @@ public class Student extends Person implements Serializable {
         this.yearOfEntry = yearOfEntry;
     }
 
-    private Date getYearOfEntry() {
+    public Date getYearOfEntry() {
         return this.yearOfEntry;
     }
 
     @Override
-    public void Input(Person student) throws ParseException {
+    protected void Input(Person student) throws ParseException {
         super.Input(this);
         System.out.print("Enter Year of Entry (DD.MM.YYYY): ");
         this.setYearOfEntry(DateReader());
     }
 
     @Override
-    public String Output(Person student) {
+    protected String Output(Person student) {
         return "Student age: " + this.getAge() + ". " + this.toString();
     }
 

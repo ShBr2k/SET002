@@ -1,21 +1,15 @@
 package com.company.DEMO02; //move method date, and protected
 
-
 import java.io.*;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-
 import static com.company.DEMO02.Serialization.SerializeArrayListPersonToXML;
 import static com.company.DEMO02.Deserialization.DeserializeArrayListPersonFromXML;
 import static com.company.DEMO02.FileWriter.TextArrayListPersonWriter;
+import static com.company.DEMO02.Settings.*;
 
 
 public class Main {
-
-    public static final String patternDate = "dd.MM.yyyy"; //move to helpers
-    public static final SimpleDateFormat dateFormat = new SimpleDateFormat(patternDate); //move to helpers
-
 
     public static void main(String[] args) throws ParseException {
 

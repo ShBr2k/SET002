@@ -4,13 +4,11 @@ import java.beans.ExceptionListener;
 import java.beans.XMLEncoder;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import static com.company.DEMO02.Settings.fileNameXML;
+
 
 public class Serialization {
-
-    private static final String fileNameXML = "Serialize_ArrayListPerson_" + LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd")) + ".xml"; ////move to helpers
 
     protected static void SerializeArrayListPersonToXML(ArrayList<Person> arrayListPerson) throws IOException {
         FileOutputStream fos = new FileOutputStream(fileNameXML);
