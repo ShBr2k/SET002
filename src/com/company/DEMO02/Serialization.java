@@ -12,10 +12,10 @@ public class Serialization {
 
     private static String fileNameXML = "Serialize_ArrayListPerson_" + LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd")) + ".xml"; ////move to helpers
 
-    protected static void serializeArrayListPersonToXML(ArrayList<Person> arrayListPerson) throws IOException {
+    protected static void SerializeArrayListPersonToXML(ArrayList<Person> arrayListPerson) throws IOException {
         FileOutputStream fos = new FileOutputStream(fileNameXML);
         XMLEncoder encoder = new XMLEncoder(fos);
-        encoder.setExceptionListener(new ExceptionListener() {
+        encoder.setExceptionListener (new ExceptionListener() {
             public void exceptionThrown(Exception e) {
                 System.out.println("Exception! :" + e.toString());
             }
@@ -24,6 +24,4 @@ public class Serialization {
         encoder.close();
         fos.close();
     }
-
-
 }

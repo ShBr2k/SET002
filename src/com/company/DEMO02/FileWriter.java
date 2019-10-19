@@ -9,7 +9,7 @@ public class FileWriter {
 
     private static String fileNameLog = "Text_ArrayListPerson_" + LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd")) + ".log"; ////move to helpers
 
-    protected static void FileWriter(ArrayList arrayList) {
+    protected static void TextArrayListPersonWriter(ArrayList arrayList) {
 
         try (java.io.FileWriter writer = new java.io.FileWriter(fileNameLog, true)) {
 

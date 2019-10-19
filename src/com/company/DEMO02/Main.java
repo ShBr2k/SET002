@@ -5,17 +5,16 @@ import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
 
-import static com.company.DEMO02.Serialization.serializeArrayListPersonToXML;
-import static com.company.DEMO02.Deserialization.deserializeArrayListPersonFromXML;
-import static com.company.DEMO02.FileWriter.FileWriter;
+import static com.company.DEMO02.Serialization.SerializeArrayListPersonToXML;
+import static com.company.DEMO02.Deserialization.DeserializeArrayListPersonFromXML;
+import static com.company.DEMO02.FileWriter.TextArrayListPersonWriter;
 
 
 public class Main {
 
-    public static String patternDate = "dd.MM.yyyy"; //move to helpers
-    public static SimpleDateFormat dateFormat = new SimpleDateFormat(patternDate); //move to helpers
+    public static final String patternDate = "dd.MM.yyyy"; //move to helpers
+    public static final SimpleDateFormat dateFormat = new SimpleDateFormat(patternDate); //move to helpers
 
 
     public static void main(String[] args) throws ParseException {
@@ -56,7 +55,7 @@ public class Main {
 
         // Sorting listArray by First Name
         System.out.println("\nSorting by First Name:");
-        Collections.sort(arrayList, new FirstNameComparator());
+        arrayList.sort(new FirstNameComparator());
         for (int i = 0; i < arrayList.size(); i++) {
             person = arrayList.get(i);
             System.out.println(person.Output(person));
@@ -65,31 +64,33 @@ public class Main {
 
         // Sorting listArray by Last Name
         System.out.println("\nSorting by Last Name:");
-        Collections.sort(arrayList, new LastNameComparator());
+        arrayList.sort(new LastNameComparator());
         for (int i = 0; i < arrayList.size(); i++) {
             person = arrayList.get(i);
             System.out.println(person.Output(person));
         }
 
 
-        // Save listArray to the file
-        FileWriter(arrayList);
+        // Save listArrayPerson to the file
+        TextArrayListPersonWriter(arrayList);
 
 
         // Serialization
         try {
-            serializeArrayListPersonToXML(arrayList);
+            SerializeArrayListPersonToXML(arrayList);
         } catch (IOException e) {
             e.printStackTrace();
+            System.exit(0);
         }
 
 
         // Deserialization
         ArrayList<Person> deserializeArrayListPerson = null;
         try {
-            deserializeArrayListPerson = deserializeArrayListPersonFromXML();
+            deserializeArrayListPerson = DeserializeArrayListPersonFromXML();
         } catch (IOException e) {
             e.printStackTrace();
+            System.exit(0);
         }
 
 
