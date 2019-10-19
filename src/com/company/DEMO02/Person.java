@@ -1,6 +1,7 @@
 package com.company.DEMO02; //static method ????
 
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.Period;
@@ -10,7 +11,8 @@ import java.util.Date;
 import static com.company.DEMO02.Readers.*;
 
 
-public class Person {
+public class Person implements Serializable {
+    private static final long serialversionUID = 129348938L;
     private String taxNumber;
     private String firstName;
     private String lastName;
@@ -85,7 +87,7 @@ public class Person {
     }
 
     public String Output(Person person) {
-        return "Person age:  " + age + ". " + this.toString();
+        return "Person age:  " + this.getAge() + ". " + this.toString();
     }
 
     @Override

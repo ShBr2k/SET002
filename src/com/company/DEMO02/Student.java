@@ -38,7 +38,7 @@ public class Student extends Person implements Serializable {
 
     @Override
     public String Output(Person student) {
-        return "Student age: " + age + ". " + this.toString();
+        return "Student age: " + this.getAge() + ". " + this.toString(); //age = 0 if deser.
     }
 
     @Override

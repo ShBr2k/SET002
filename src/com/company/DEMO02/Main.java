@@ -1,12 +1,14 @@
 package com.company.DEMO02;
 
 
+import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 
 import static com.company.DEMO02.FileWriter.FileWriter;
+import static com.company.DEMO02.Serialization.*;
 
 
 public class Main {
@@ -33,6 +35,51 @@ public class Main {
         person.Input(person);
         arrayList.add(person);
 
+
+
+        // Serialization
+        try {
+            serializeArrayListPersonToXML(arrayList);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        // Deserialization
+        ArrayList<Person> arrayListGet = null;
+        try {
+            arrayListGet = deserializeArrayListPersonFromXML();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        // Show result of deserialization
+        System.out.println("\nShow all students and persons after deserialization:");
+        for (int i = 0; i < arrayListGet.size(); i++) {
+            person = arrayListGet.get(i);
+            System.out.println(person.Output(person));
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        System.exit(0);
+
+
+
+
+
+
         Student student = new Student();
         System.out.println("\nENTER INFO ABOUT STUDENT:");
         student.Input(student);
@@ -45,7 +92,7 @@ public class Main {
             if (((person.getAge() > 18) && (person instanceof Person)) || (person instanceof Student)) {
                 System.out.println(person.Output(person));
             } else {
-                //System.out.println(person.Output(person));
+                //System.out.println("- " + person.Output(person));
             }
         }
 
