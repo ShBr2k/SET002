@@ -29,20 +29,10 @@ public class SerializationTest {
         }
 
         // Serialization
-        try {
-            SerializeArrayListPersonToXML(serializationArrayListPerson);
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.exit(0);
-        }
+        SerializeArrayListPersonToXML(serializationArrayListPerson);
 
         // Deserialization
-        try {
-            deserializeArrayListPerson = DeserializeArrayListPersonFromXML();
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.exit(0);
-        }
+        deserializeArrayListPerson = DeserializeArrayListPersonFromXML();
     }
 
 
@@ -61,6 +51,10 @@ public class SerializationTest {
 
         int expected = serializationArrayListPerson.get(0).getAge();
         int actual = deserializeArrayListPerson.get(0).getAge();
+
+        System.out.println("Expected age: " + expected);
+        System.out.println("Actual age: " + actual);
+
         assertEquals(actual, expected);
 
     }

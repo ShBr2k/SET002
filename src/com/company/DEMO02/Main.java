@@ -3,6 +3,7 @@ package com.company.DEMO02; //move method date, and protected
 import java.io.*;
 import java.text.ParseException;
 import java.util.ArrayList;
+
 import static com.company.DEMO02.Serialization.SerializeArrayListPersonToXML;
 import static com.company.DEMO02.Deserialization.DeserializeArrayListPersonFromXML;
 import static com.company.DEMO02.FileWriter.TextArrayListPersonWriter;
@@ -25,12 +26,12 @@ public class Main {
 
         // Create by input
         Person person = new Person();
-        System.out.println("\nENTER INFO ABOUT PERSON:");
+        System.out.println("\nENTER INFO FOR PERSON:");
         person.Input(person);
         arrayList.add(person);
 
         Student student = new Student();
-        System.out.println("\nENTER INFO ABOUT STUDENT:");
+        System.out.println("\nENTER INFO FOR STUDENTS:");
         student.Input(student);
         arrayList.add(student);
 
@@ -48,7 +49,7 @@ public class Main {
 
 
         // Sorting listArray by First Name
-        System.out.println("\nSorting by First Name:");
+        System.out.println("\nSorting records by First Name:");
         arrayList.sort(new FirstNameComparator());
         for (int i = 0; i < arrayList.size(); i++) {
             person = arrayList.get(i);
@@ -57,7 +58,7 @@ public class Main {
 
 
         // Sorting listArray by Last Name
-        System.out.println("\nSorting by Last Name:");
+        System.out.println("\nSorting records by Last Name:");
         arrayList.sort(new LastNameComparator());
         for (int i = 0; i < arrayList.size(); i++) {
             person = arrayList.get(i);
@@ -70,26 +71,14 @@ public class Main {
 
 
         // Serialization
-        try {
-            SerializeArrayListPersonToXML(arrayList);
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.exit(0);
-        }
+        SerializeArrayListPersonToXML(arrayList);
 
 
         // Deserialization
-        ArrayList<Person> deserializeArrayListPerson = null;
-        try {
-            deserializeArrayListPerson = DeserializeArrayListPersonFromXML();
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.exit(0);
-        }
+        ArrayList<Person> deserializeArrayListPerson = DeserializeArrayListPersonFromXML();
 
 
         // Show result of deserialization
-        System.out.println("\nShow all students and persons after deserialization:");
         for (int i = 0; i < deserializeArrayListPerson.size(); i++) {
             person = deserializeArrayListPerson.get(i);
             System.out.println(person.Output(person));
