@@ -18,7 +18,8 @@ public class DSLoginPageTest {
     private static final String APP_URL = "https://ds.first-egg-bank.com/catalog-6291/#donors";
 
 
-    private static void setChromeDriverProperty() {
+
+    public static void setChromeDriverProperty() {
         //System.setProperty("webdriver.chrome.driver", "C:/Users/User/IdeaProjects/zJars/chromedriver.exe");
         System.setProperty("webdriver.chrome.driver", "C:/Users/ShBr2k/IdeaProjects/zJars/chromedriver.exe");
     }
@@ -33,18 +34,19 @@ public class DSLoginPageTest {
 
 
     @Test(priority = 1)
-    public void launchApplication() {
+    public static void launchApplication() {
 
         webDriver.get(APP_URL);
 
-        WebElement topSlider = (new WebDriverWait(webDriver, 60)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@id='slider-wrapper-panel']")));
+        WebElement topSlider = (new WebDriverWait(webDriver, 60)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='slider-wrapper-panel']")));
+        WebElement loginButton = (new WebDriverWait(webDriver, 60)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'Log in')]")));
 
     }
 
 
     // Checking elements at def. page
     @Test(priority = 2)
-    public void defaultPage() {
+    public static void defaultPage() {
 
         WebElement topSlider = webDriver.findElement(By.xpath("//div[@id='slider-wrapper-panel']"));
         Assert.assertEquals(topSlider.isDisplayed(), true);
@@ -68,7 +70,7 @@ public class DSLoginPageTest {
 
     // Checking elements at login form
     @Test(priority = 3)
-    public void loginForm() {
+    public static void loginForm() {
 
         WebElement loginForm = webDriver.findElement(By.xpath("//div[@class='feb-abstract-dialog']"));
         Assert.assertEquals(loginForm.isDisplayed(), true);
@@ -92,7 +94,7 @@ public class DSLoginPageTest {
 
     // Checking load catalog page
     @Test(priority = 4)
-    public void loadCatalogPage() {
+    public static void loadCatalogPage() {
 
         WebElement logOutButton = (new WebDriverWait(webDriver, 60)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[contains(text(),'Logout')]")));
 
@@ -101,7 +103,7 @@ public class DSLoginPageTest {
 
     // Checking elements at catalog page
     @Test(priority = 5)
-    public void catalogPage() {
+    public static void catalogPage() {
 
         WebElement filtersSet = webDriver.findElement(By.xpath("//div[@class='GHKAII4CLP GHKAII4CBQ']"));
         Assert.assertEquals(filtersSet.isDisplayed(), true);
@@ -109,6 +111,16 @@ public class DSLoginPageTest {
         WebElement donorIDEdit = webDriver.findElement(By.xpath("//input[@placeholder='Donor ID']"));
         Assert.assertEquals(donorIDEdit.isDisplayed(), true);
 
+        //======================
+
+        donorIDEdit.sendKeys("VL0893");
+        webDriver.findElement(By.xpath("//img[@class='gwt-Image']")).click();
+        WebElement topSlider = (new WebDriverWait(webDriver, 60)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'Log inZ')]")));
+
+        WebElement selectButton = (new WebDriverWait(webDriver, 60)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@class='feb-select-btn']")));
+        selectButton.click();
+        WebElement gotoCartButton = (new WebDriverWait(webDriver, 60)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Go to cart')]")));
+        gotoCartButton.click();
     }
 
 
@@ -124,7 +136,7 @@ public class DSLoginPageTest {
 
 
     // Do login
-    public void doLogin() {
+    public static void doLogin() {
 
         webDriver.findElement(By.xpath("//input[@name='username']")).sendKeys("shbr2k");
         webDriver.findElement(By.xpath("//input[@name='password']")).sendKeys("FEB_001");
