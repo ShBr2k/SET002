@@ -20,8 +20,8 @@ public class DSLoginPageTest {
 
 
     public static void setChromeDriverProperty() {
-        //System.setProperty("webdriver.chrome.driver", "C:/Users/User/IdeaProjects/zJars/chromedriver.exe");
-        System.setProperty("webdriver.chrome.driver", "C:/Users/ShBr2k/IdeaProjects/zJars/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:/Users/User/IdeaProjects/zJars/chromedriver.exe");
+        //System.setProperty("webdriver.chrome.driver", "C:/Users/ShBr2k/IdeaProjects/zJars/chromedriver.exe");
     }
 
 
@@ -39,7 +39,8 @@ public class DSLoginPageTest {
         webDriver.get(APP_URL);
 
         WebElement topSlider = (new WebDriverWait(webDriver, 60)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='slider-wrapper-panel']")));
-        WebElement loginButton = (new WebDriverWait(webDriver, 60)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'Log in')]")));
+        new WebDriverWait(webDriver, 60).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='slider-wrapper-panel']")));
+        new WebDriverWait(webDriver, 60).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'Log in')]")));
 
     }
 
@@ -108,19 +109,34 @@ public class DSLoginPageTest {
         WebElement filtersSet = webDriver.findElement(By.xpath("//div[@class='GHKAII4CLP GHKAII4CBQ']"));
         Assert.assertEquals(filtersSet.isDisplayed(), true);
 
-        WebElement donorIDEdit = webDriver.findElement(By.xpath("//input[@placeholder='Donor ID']"));
+        WebElement donorIDEdit = webDriver.findElement(By.xpath("@placeholder='Donor ID'"));
         Assert.assertEquals(donorIDEdit.isDisplayed(), true);
 
         //======================
 
         donorIDEdit.sendKeys("VL0893");
         webDriver.findElement(By.xpath("//img[@class='gwt-Image']")).click();
-        WebElement topSlider = (new WebDriverWait(webDriver, 60)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'Log inZ')]")));
 
-        WebElement selectButton = (new WebDriverWait(webDriver, 60)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@class='feb-select-btn']")));
-        selectButton.click();
-        WebElement gotoCartButton = (new WebDriverWait(webDriver, 60)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Go to cart')]")));
-        gotoCartButton.click();
+
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
+        new WebDriverWait(webDriver, 60).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@class='feb-select-btn']"))).click();
+        new WebDriverWait(webDriver, 60).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Go to cart')]"))).click();
+
+
+
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
 

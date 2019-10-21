@@ -30,11 +30,11 @@ public class ConsoleReaders {
                 System.exit(0);
             }
 
-            if (!patternDate.matcher(input).find()) {
+            if (!patternDate.matcher(input).matches()) {
                 System.out.print("Entered Date is wrong. Please try again: ");
             }
 
-        } while (!patternDate.matcher(input).find());
+        } while (!patternDate.matcher(input).matches());
 
 
         //newer rise exception

@@ -11,10 +11,9 @@ import static com.company.DEMO02.Settings.fileNameXML;
 public class Serialization {
 
     protected static void SerializeArrayListPersonToXML(ArrayList<Person> arrayListPerson) {
-        FileOutputStream fos = null;
 
         try {
-            fos = new FileOutputStream(fileNameXML);
+            FileOutputStream fos = new FileOutputStream(fileNameXML);
             XMLEncoder encoder = new XMLEncoder(fos);
             encoder.writeObject(arrayListPerson);
             encoder.close();
