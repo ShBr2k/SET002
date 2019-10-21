@@ -19,13 +19,13 @@ public class PersonAgeTest {
     @BeforeTest
     public void initObjects() {
         try {
-            person1 = new Person("TN001", "FN0D", "LN0A", dateFormat.parse("20.07.1979"));
+            person1 = new Person("TNTest01", "FNTestA", "LNTestA", dateFormat.parse("20.07.1979"));
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
         try {
-            person2 = new Person("TN001", "FN0D", "LN0A", dateFormat.parse("20.07.1980"));
+            person2 = new Person("TNTest02", "FNTestB", "LNTestB", dateFormat.parse("20.07.1980"));
         } catch (ParseException e) {
             e.printStackTrace();
         }

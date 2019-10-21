@@ -17,10 +17,10 @@ public class Main {
 
 
         // Create by constructor
-        arrayList.add(new Person("TN001", "FN0D", "LN0A", dateFormat.parse("20.07.1979")));
-        arrayList.add(new Person("TN002", "FN0B", "LN0B", dateFormat.parse("22.07.2005")));
-        arrayList.add(new Student("TN003", "FN0C", "LN0C", dateFormat.parse("23.07.1981"), dateFormat.parse("01.01.2000")));
-        arrayList.add(new Student("TN004", "FN0A", "LN0D", dateFormat.parse("24.07.2002"), dateFormat.parse("01.01.2010")));
+        arrayList.add(new Person("TN1", "A", "A", dateFormat.parse("20.07.1979")));
+        arrayList.add(new Person("TN2", "B", "B", dateFormat.parse("22.07.2005")));
+        arrayList.add(new Student("TN3", "C", "C", dateFormat.parse("23.07.1981"), dateFormat.parse("01.01.2000")));
+        arrayList.add(new Student("TN4", "A", "D", dateFormat.parse("24.07.2002"), dateFormat.parse("01.01.2010")));
 
 
         // Create by input

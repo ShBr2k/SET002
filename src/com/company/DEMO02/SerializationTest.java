@@ -23,7 +23,7 @@ public class SerializationTest {
 
         // Add object in ArrayListPerson
         try {
-            serializationArrayListPerson.add(new Person("TN001", "FN0D", "LN0A", dateFormat.parse("20.07.1979")));
+            serializationArrayListPerson.add(new Person("TNTest01", "FNTestA", "LNTestA", dateFormat.parse("20.07.1979")));
         } catch (ParseException e) {
             e.printStackTrace();
         }

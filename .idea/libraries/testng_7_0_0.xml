@@ -2,7 +2,6 @@
   <library name="testng-7.0.0">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/testng-7.0.0.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/junit-4.12.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
