@@ -9,10 +9,12 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+
 /**
- * DSMOMSCatalogTest provide testing of functionality application:
- *
- * Check elements on the page
+ * DSMOMSCatalogTest provide testing of functionality|UI application:
+ * <p>
+ * Check elements on the default page
+ * Check elements on the login form
  * Test login user
  * Test select of donors
  * Test add|remove donor from cart
@@ -26,9 +28,10 @@ public class DSMOMSCatalogTest {
     private static WebDriver webDriver;
     private static final String APP_URL = "https://ds.first-egg-bank.com/catalog-6291/#donors";
     private static long start_time;
+    private static String[] donorArray = {"VL0893", "MZ0693"};
 
 
-    private static void setChromeDriverProperty() {
+    private static void SetChromeDriverProperty() {
 
         System.setProperty("webdriver.chrome.driver", "C:/Users/User/IdeaProjects/zJars/chromedriver.exe");
         //System.setProperty("webdriver.chrome.driver", "C:/Users/ShBr2k/IdeaProjects/zJars/chromedriver.exe");
@@ -37,19 +40,19 @@ public class DSMOMSCatalogTest {
 
 
     @BeforeClass
-    public static void prepareApplication() {
+    public static void PrepareApplication() {
 
-        setChromeDriverProperty();
+        SetChromeDriverProperty();
         webDriver = new ChromeDriver();
         webDriver.manage().window().maximize();
         start_time = System.currentTimeMillis();
-
+        //webDriver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
     }
 
 
     /* Check opened default page */
     @Test(priority = 1)
-    public static void launchApplication() {
+    public static void LaunchApplication() {
 
         webDriver.get(APP_URL);
         WebElement topSlider = new WebDriverWait(webDriver, 60).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='slider-wrapper-panel']")));
@@ -60,7 +63,7 @@ public class DSMOMSCatalogTest {
 
     /* Checking elements at default page */
     @Test(priority = 2)
-    public static void defaultPage() {
+    public static void DefaultPage() {
 
         // Check amount of LogoImage
         int logoImageCount = webDriver.findElements(By.xpath("//img[contains (@src,'company-logo')]")).size();
@@ -90,6 +93,7 @@ public class DSMOMSCatalogTest {
         WebElement loginButton = webDriver.findElement(By.xpath("//div[contains(text(),'Log in')]"));
         Assert.assertTrue(loginButton.isDisplayed());
 
+        // User login
         loginButton.click();
 
     }
@@ -97,7 +101,7 @@ public class DSMOMSCatalogTest {
 
     /* Checking elements on login form */
     @Test(priority = 3)
-    public static void loginForm() {
+    public static void LoginForm() {
 
         // Check loginForm with caption "Login Form"
         WebElement loginFormCaption = webDriver.findElement(By.xpath("//div[@class='feb-abstract-dialog']//div[@class='Caption']"));
@@ -120,20 +124,20 @@ public class DSMOMSCatalogTest {
         Assert.assertTrue(cancelButton.isDisplayed());
 
         // Run 'doLogin' method with temporary credentials
-        doLogin("ShBr2k", "#ILoveYouMom#");
+        DoLogin("ShBr2k", "#ILoveYouMom#");
 
     }
 
 
     /* Checking for successful login and main page of catalog is showing */
     @Test(priority = 4)
-    public static void catalogPage() {
+    public static void CatalogPage() {
 
         // Check 'logout' Button
         WebElement logOutButton = new WebDriverWait(webDriver, 60).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[contains(text(),'Logout')]")));
         Assert.assertTrue(logOutButton.isDisplayed());
 
-        // Check amount (10) of images of donor
+        // Check amount (10) of images of donors
         WebElement tenDonorImage = new WebDriverWait(webDriver, 60).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='container-fluid']/div/div[10]//img[contains(@src,'preview')]")));
         Assert.assertTrue(tenDonorImage.isDisplayed());
 
@@ -150,25 +154,20 @@ public class DSMOMSCatalogTest {
     }
 
 
-    /* Select VL0893 donor and add it to the cart */
+    /* Add donors to the cart */
     @Test(priority = 5)
-    public static void selectDonor01() {
-        selectDonor("VL0893");
+    public static void AddDonorToCart() {
+
+        // Add donorArray to the cart
+        for (String donorID : donorArray) AddDonorToCart(donorID);
 
     }
 
 
-    /* Select MZ0693 donor and add it to the cart */
+
+    /* Check full cart */
     @Test(priority = 6)
-    public static void selectDonor02() {
-        selectDonor("MZ0693");
-
-    }
-
-
-    /* Add|Remove donor from to cart */
-    @Test(priority = 7)
-    public static void orderDonor() {
+    public static void CartFull() {
 
         // Go to cart
         WebElement gotoCartButton = new WebDriverWait(webDriver, 60).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='header-panel']//div[contains(text(),'Cart')]")));
@@ -185,27 +184,32 @@ public class DSMOMSCatalogTest {
         // Write some notes
         WebElement commentTextArea = webDriver.findElement(By.xpath("//textarea[contains(@class,'comment')]"));
         commentTextArea.clear();
-        commentTextArea.sendKeys("Added to cart two donors: VL0893, MZ0693.\nBoth donors will be removed from cart.");
+        commentTextArea.sendKeys("Added to cart following donor(s):\n");
+        for (String donorID : donorArray) commentTextArea.sendKeys(donorID + "\n");
+        commentTextArea.sendKeys("\nNext, donors will be removed from cart.\n\nUser will be logout.");
 
         ((JavascriptExecutor) webDriver).executeScript("window.scrollBy(0,-250)");
 
         //Just demo
         try {
-            Thread.sleep(1000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        // Remove VL0893 donor from order
-        WebElement removeButton;
-        removeButton = webDriver.findElement(By.xpath("//div[contains(text(),'VL0893')]/../../div[contains(@class,'gwt-HTML')][contains(text(),'Remove')]"));
-        removeButton.click();
+    }
 
-        // Remove MZ0693 donor from order
-        removeButton = webDriver.findElement(By.xpath("//div[contains(text(),'MZ0693')]/../../div[contains(@class,'gwt-HTML')][contains(text(),'Remove')]"));
-        removeButton.click();
 
-        ((JavascriptExecutor) webDriver).executeScript("window.scrollBy(0,-150)");
+    /* Remove donors from cart and check empty cart */
+    @Test(priority = 7)
+    public static void CartEmpty() {
+
+        // Remove donorArray from cart
+        for (String donorID : donorArray) RemoveDonorFromCart(donorID);
+
+        // Check amount of donors in cart
+        int donorImagesCount = webDriver.findElements(By.xpath("//div[@class='container-fluid']//img[contains(@src,'preview')]")).size();
+        Assert.assertEquals(donorImagesCount, 0);
 
         // Just demo
         try {
@@ -215,9 +219,19 @@ public class DSMOMSCatalogTest {
         }
 
         // Return to the catalog
-        webDriver.findElement(By.cssSelector("div[class*='lbl-back-to-catalog']")).click();
+        webDriver.findElement(By.cssSelector("div[class*='lbl-back-to-catalog']")).click(); //.lbl-back-to-catalog //[class*='lbl-back-to-catalog']
         webDriver.findElement(By.xpath("//input[@placeholder='Donor ID']")).clear();
         webDriver.findElement(By.xpath("//input[@placeholder='Donor ID']")).sendKeys(Keys.RETURN);
+
+    }
+
+
+    /* User logout and closing browser */
+    @AfterClass(alwaysRun = true)
+    public static void CloseBrowser() {
+
+        // User logout
+        webDriver.findElement(By.cssSelector("div[class='container']>div:first-child>div>div:last-child>div")).click();
 
         // Just demo
         try {
@@ -226,12 +240,7 @@ public class DSMOMSCatalogTest {
             e.printStackTrace();
         }
 
-    }
-
-    /* Close browser */
-    @AfterClass(alwaysRun = true)
-    public static void closeBrowser() {
-
+        // Closing browser
         if (webDriver != null)
             webDriver.quit();
         System.out.println("\nPassed time, sec: " + (System.currentTimeMillis() - start_time) / 1000);
@@ -240,7 +249,7 @@ public class DSMOMSCatalogTest {
 
 
     /* Do login of user*/
-    private static void doLogin(String login, String password) {
+    private static void DoLogin(String login, String password) {
 
         WebElement userNameInput = webDriver.findElement(By.xpath("//input[@name='username']"));
         WebElement passwordInput = webDriver.findElement(By.xpath("//input[@name='password']"));
@@ -256,7 +265,7 @@ public class DSMOMSCatalogTest {
 
 
     /* Select a donor from the catalog and add it to the cart */
-    private static void selectDonor(String donorID) {
+    private static void AddDonorToCart(String donorID) {
 
         // Input donor ID
         WebElement donorIDInput = webDriver.findElement(By.xpath("//input[@placeholder='Donor ID']"));
@@ -281,9 +290,26 @@ public class DSMOMSCatalogTest {
         WebElement selectDonorButton = webDriver.findElement(By.xpath("//button[contains(text(),'Select a donor')]"));
         selectDonorButton.click();
 
+        //Just demo
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         // Continue selection
         WebElement continueSelectionButton = new WebDriverWait(webDriver, 60).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='feb-abstract-dialog']//button[contains(text(),'Continue selection')]")));
         continueSelectionButton.click();
+
+    }
+
+
+    /* Remove donor from cart */
+    private static void RemoveDonorFromCart(String donorID) {
+
+        // Remove donor from cart by using different "Remove" buttons
+        webDriver.findElement(By.xpath("//div[contains(text(),'" + donorID + "')]/../../div[contains(@class,'gwt-HTML')][contains(text(),'Remove')]")).click();
+        ((JavascriptExecutor) webDriver).executeScript("window.scrollBy(0,-150)");
 
     }
 
