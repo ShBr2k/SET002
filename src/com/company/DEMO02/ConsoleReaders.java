@@ -1,5 +1,6 @@
 package com.company.DEMO02;
 
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -10,8 +11,17 @@ import java.util.regex.Pattern;
 import static com.company.DEMO02.Settings.*;
 
 
+/**
+ * The ConsoleReaders class provide reading from console further types of value:
+ * String, Date and integer.
+ * The class provides checking correct value for input.
+ *
+ * @author Roman Shamakhin
+ * @version 0.32 26 Oct 2019
+ */
 public class ConsoleReaders {
 
+    /* Method DateReader provide reading value of Date type and check it by regex pattern (dd.mm.yyyy) */
     protected static Date DateReader() throws ParseException {
 
         String input = null;
@@ -50,6 +60,7 @@ public class ConsoleReaders {
     }
 
 
+    /* Method StringReader provide reading value of String type */
     protected static String StringReader() {
         String input;
         String result = null;
@@ -68,6 +79,7 @@ public class ConsoleReaders {
     }
 
 
+    /* Method integerReader provide reading value of integer type */
     protected static Integer integerReader() {
         String input;
         Integer result = 0;
@@ -86,4 +98,5 @@ public class ConsoleReaders {
         }
         return result;
     }
+
 }

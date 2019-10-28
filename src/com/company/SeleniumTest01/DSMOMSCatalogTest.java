@@ -12,7 +12,6 @@ import org.testng.annotations.Test;
 
 /**
  * DSMOMSCatalogTest provide testing of functionality|UI application:
- * <p>
  * Check elements on the default page
  * Check elements on the login form
  * Test login user
@@ -50,13 +49,17 @@ public class DSMOMSCatalogTest {
     }
 
 
-    /* Check opened default page */
+    /* Check opened default web page */
     @Test(priority = 1)
     public static void LaunchApplication() {
 
         webDriver.get(APP_URL);
         WebElement topSlider = new WebDriverWait(webDriver, 60).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='slider-wrapper-panel']")));
         Assert.assertTrue(topSlider.isDisplayed());
+
+        // Check amount of default donors
+        int defaultDonorImageCount = webDriver.findElements(By.xpath("//img[contains (@src,'preview')]")).size();
+        Assert.assertEquals(defaultDonorImageCount, 1);
 
     }
 
@@ -77,9 +80,8 @@ public class DSMOMSCatalogTest {
         WebElement catalogName = webDriver.findElement(By.xpath("//div[contains(text(),'GALLERY OF MOM')]"));
         Assert.assertTrue(catalogName.isDisplayed());
 
-        // Check default image of donor
-        WebElement defaultDonorImage = webDriver.findElement(By.xpath("//img[contains(@src,'preview')]"));
-        Assert.assertTrue(defaultDonorImage.isDisplayed());
+        //WebElement defaultDonorImage = webDriver.findElement(By.xpath("//img[contains(@src,'preview')]"));
+        //Assert.assertTrue(defaultDonorImage.isDisplayed());
 
         // Check Email address
         WebElement bottomValueEmail = webDriver.findElement(By.xpath("//div[contains(text(),'Email')]/following-sibling::div"));
@@ -232,6 +234,13 @@ public class DSMOMSCatalogTest {
 
         // User logout
         webDriver.findElement(By.cssSelector("div[class='container']>div:first-child>div>div:last-child>div")).click();
+
+        // Check image of default donors
+        WebElement defaultDonorImage = new WebDriverWait(webDriver, 60).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//img[contains (@src,'preview')]/../div[contains (text(),'DEMO.01')]")));
+
+        // Check amount of default image of donor
+        int defaultDonorImageCount = webDriver.findElements(By.xpath("//img[contains (@src,'preview')]")).size();
+        Assert.assertEquals(defaultDonorImageCount, 1);
 
         // Just demo
         try {

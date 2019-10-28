@@ -1,5 +1,6 @@
 package com.company.DEMO02;
 
+
 import java.beans.XMLEncoder;
 import java.io.*;
 import java.util.ArrayList;
@@ -7,6 +8,13 @@ import java.util.ArrayList;
 import static com.company.DEMO02.Settings.fileNameXML;
 
 
+/**
+ * The Serialization class provide serialization of instances of classes Person and Student
+ * from ArrayList's records to XML file.
+ *
+ * @author Roman Shamakhin
+ * @version 0.31 26 Oct 2019
+ */
 public class Serialization {
 
     protected static void SerializeArrayListPersonToXML(ArrayList<Person> arrayListPerson) {
@@ -25,4 +33,5 @@ public class Serialization {
         }
 
     }
+
 }
