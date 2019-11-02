@@ -20,7 +20,7 @@ public class Student extends Person implements Serializable {
     private Date yearOfEntry;
 
 
-    /* Constructor Student provide creation of default instances */
+    /* Default constructor Student provide creation of instances */
     public Student() {
     }
 

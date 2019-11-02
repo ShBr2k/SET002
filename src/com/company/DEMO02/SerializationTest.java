@@ -60,6 +60,7 @@ public class SerializationTest {
         System.out.println("Expected size of ArrayListPerson: " + expected);
         System.out.println("Actual size of ArrayListPerson: " + actual);
 
+        //Assert
         assertEquals(actual, expected);
 
     }
@@ -77,6 +78,7 @@ public class SerializationTest {
         System.out.println("Expected age: " + expected);
         System.out.println("Actual age: " + actual);
 
+        //Assert
         assertEquals(actual, expected);
 
     }

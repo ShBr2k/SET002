@@ -126,7 +126,7 @@ public class DSMOMSCatalogTest {
         Assert.assertTrue(cancelButton.isDisplayed());
 
         // Run 'doLogin' method with temporary credentials
-        DoLogin("ShBr2k", "#ILoveYouMom#");
+        DoLogin("ShBr2k", "#password#");
 
     }
 
@@ -190,7 +190,7 @@ public class DSMOMSCatalogTest {
         for (String donorID : donorArray) commentTextArea.sendKeys(donorID + "\n");
         commentTextArea.sendKeys("\nNext, donors will be removed from cart.\n\nUser will be logout.");
 
-        ((JavascriptExecutor) webDriver).executeScript("window.scrollBy(0,-250)");
+        ((JavascriptExecutor) webDriver).executeScript("window.scrollBy(0,-200)");
 
         //Just demo
         try {

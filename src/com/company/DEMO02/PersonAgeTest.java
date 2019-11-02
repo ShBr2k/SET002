@@ -50,7 +50,10 @@ public class PersonAgeTest {
     public void testGetAge1() {
 
         int expected = 40;
+
         int actual = person1.getAge();
+
+        //Assert
         assertEquals(actual, expected);
 
     }
@@ -61,7 +64,10 @@ public class PersonAgeTest {
     public void testGetAge2() {
 
         int expected = 39;
+
         int actual = person2.getAge();
+
+        //Assert
         assertEquals(actual, expected);
 
     }

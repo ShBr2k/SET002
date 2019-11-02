@@ -9,7 +9,7 @@ import static com.company.zTools.Readers.stringReader;
 
 
 /**
- * Class HW05 - main for current task
+ * Class
  *
  * @author Roman Shamakhin
  * @version 0.11 04 Oct 2019

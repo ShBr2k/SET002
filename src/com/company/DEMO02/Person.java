@@ -27,7 +27,7 @@ public class Person implements Serializable {
     private int age;
 
 
-    /* Constructor Person provide creation of default instances */
+    /* Default constructor Person provide creation of instances */
     public Person() {
     }
 
@@ -120,7 +120,7 @@ public class Person implements Serializable {
     }
 
 
-    /* Method toString is overridden and provide compiled string with information of instance.
+    /* Method toString is overridden and provide to compile string with information of instance.
      * Used format of string for formatting date value. */
     @Override
     public String toString() {
